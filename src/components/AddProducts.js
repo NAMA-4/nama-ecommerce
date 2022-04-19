@@ -25,7 +25,7 @@ const AddProducts = () => {
     { ProductName: 'Loading...', id: 'initial' },
   ])
 
-  const imageListRef = ref(storage, 'images/')
+  //   const imageListRef = ref(storage, 'images/')
   const upLoadImage = () => {
     if (imageUpload == null) return
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
