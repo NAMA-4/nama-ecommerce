@@ -37,6 +37,7 @@ const AddProducts = () => {
   }
 
   useEffect(() => {
+    const imageListRef = ref(storage, 'images/')
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
