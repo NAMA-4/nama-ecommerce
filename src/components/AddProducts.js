@@ -119,12 +119,8 @@ const AddProducts = () => {
             <li key={product.id}>
               <h3>{product.ProductName}</h3>
               <h5>{product.ProductPrice}</h5>
-              <a href="#" onClick={() => handleEdit(product.id)}>
-                Edit
-              </a>
-              <a href="#" onClick={() => handleDelete(product.id)}>
-                Delete
-              </a>
+              <button onClick={() => handleEdit(product.id)}>Edit</button>
+              <button onClick={() => handleDelete(product.id)}>Delete</button>
             </li>
           ))}
         </ul>
