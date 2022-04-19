@@ -20,10 +20,10 @@ export default function ScrollableTabsButtonForce() {
         allowScrollButtonsMobile
         aria-label="scrollable force tabs example"
       >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
+        <Tab label="Skin Care" />
+        <Tab label="Make Up" />
+        <Tab label="Tonner" />
+        <Tab label="Lip Stick" />
         <Tab label="Item Five" />
         <Tab label="Item Six" />
         <Tab label="Item Seven" />
