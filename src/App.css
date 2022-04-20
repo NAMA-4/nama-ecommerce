@@ -44,6 +44,14 @@
   padding: 1rem;
   position: sticky;
 }
+/* AddProduct.js */
+.addproduct-form {
+  padding: 1rem;
+}
+.input {
+  width: 100px;
+  margin: 0.5rem;
+}
 /* Swiper.js */
 #app {
   height: 100%;

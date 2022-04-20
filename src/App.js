@@ -16,14 +16,13 @@ function App() {
         <Imageslider />
         <ActionAreaCard />
         <ScrollableTabsButtonForce className="category" />
-        <RecipeReviewCard />
-        <RecipeReviewCard />
-        <RecipeReviewCard />
-        <RecipeReviewCard />
-
         <Routes>
           <Route path="/addproducts" element={<AddProducts />} />
         </Routes>
+        <RecipeReviewCard />
+        <RecipeReviewCard />
+        <RecipeReviewCard />
+        <RecipeReviewCard />
       </BrowserRouter>
     </div>
   )

@@ -58,8 +58,8 @@ const AddProducts = () => {
   }, [])
 
   const handleNew = async () => {
-    const ProductName = prompt('Enter Product Name')
-    const ProductPrice = prompt('Enter Product Price')
+    var ProductName = document.getElementById('productName').value
+    var ProductPrice = document.getElementById('productPrice').value
 
     const collectionRef = collection(firestore, 'Products')
     const payload = { ProductName, ProductPrice, timestamp: serverTimestamp() } //also {ProductName: ProductName, ProductPrice: ProductPrice}
@@ -108,12 +108,24 @@ const AddProducts = () => {
       })}
 
       <div className="example">
-        <button className="button" onClick={handleNew}>
-          New
-        </button>
         <button className="button" onClick={handleQueryDelete}>
           Query Delete
         </button>
+        <div className="addproduct-form">
+          <input
+            className="input"
+            id="productName"
+            placeholder="Name"
+            type="text"
+          />
+          <input
+            className="input"
+            id="productPrice"
+            placeholder="Price"
+            type="number"
+          />
+          <button onClick={handleNew}>Add Product</button>
+        </div>
         <ul>
           {products.map((product) => (
             <li key={product.id}>
