@@ -25,7 +25,7 @@ import { useEffect, useState } from 'react'
 
 const AddProducts = () => {
   const [imageUpload, setImageUpload] = useState(null)
-  const [imageList, setImageList] = useState([])
+  // const [imageList, setImageList] = useState([])
   const [products, setProducts] = useState([
     { ProductName: 'Loading...', id: 'initial' },
   ])
@@ -46,7 +46,7 @@ const AddProducts = () => {
     listAll(imageListRef).then((response) => {
       response.items.forEach((item) => {
         getDownloadURL(item).then((url) => {
-          setImageList((prev) => [...prev, url])
+          // setImageList((prev) => [...prev, url])
         })
       })
     })
@@ -85,7 +85,8 @@ const AddProducts = () => {
         await addDoc(collectionRef, payload)
         document.getElementById('productName').value = ''
         document.getElementById('productPrice').value = ''
-        setImageList([])
+        document.getElementById('productImg').value = ''
+        // setImageList([])
 
         // setImageList((prev) => [...prev, url])
       })
@@ -155,16 +156,17 @@ const AddProducts = () => {
           />
           <input
             type="file"
+            id="productImg"
             onChange={(event) => {
               setImageUpload(event.target.files[0])
             }}
           />
-          <button>Upload File</button>
+          {/* <button>Upload File</button> */}
           <button onClick={addProduct}>Add Product</button>
         </div>
-        {imageList.map((url) => {
+        {/* {imageList.map((url) => {
           return <img style={{ width: '14rem' }} src={url} alt="" />
-        })}
+        })} */}
         <ul>
           {products.map((product) => (
             <li key={product.id}>
