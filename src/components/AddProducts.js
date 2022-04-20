@@ -1,7 +1,13 @@
 import React from 'react'
-import { storage } from '../config/firebase'
-import { ref, uploadBytes, listAll, getDownloadURL } from 'firebase/storage'
-import { v4 } from 'uuid'
+import { storage, firestore } from '../config/firebase'
+import {
+  ref,
+  uploadBytes,
+  listAll,
+  getDownloadURL,
+  deleteObject,
+} from 'firebase/storage'
+// import { v4 } from 'uuid'
 import {
   onSnapshot,
   collection,
@@ -16,7 +22,6 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
-import { firestore } from '../config/firebase'
 
 const AddProducts = () => {
   const [imageUpload, setImageUpload] = useState(null)
@@ -26,15 +31,15 @@ const AddProducts = () => {
   ])
 
   //   const imageListRef = ref(storage, 'images/')
-  const upLoadImage = () => {
-    if (imageUpload == null) return
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
-    uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
-      await getDownloadURL(snapshot.ref).then((url) => {
-        setImageList((prev) => [...prev, url])
-      })
-    })
-  }
+  // const upLoadImage = () => {
+  //   if (imageUpload == null) return
+  //   const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+  //   uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
+  //     await getDownloadURL(snapshot.ref).then((url) => {
+  //       setImageList((prev) => [...prev, url])
+  //     })
+  //   })
+  // }
 
   useEffect(() => {
     const imageListRef = ref(storage, 'images/')
@@ -57,16 +62,46 @@ const AddProducts = () => {
     return unsub
   }, [])
 
-  const handleNew = async () => {
+  const addProduct = () => {
     var ProductName = document.getElementById('productName').value
     var ProductPrice = document.getElementById('productPrice').value
 
     const collectionRef = collection(firestore, 'Products')
-    const payload = { ProductName, ProductPrice, timestamp: serverTimestamp() } //also {ProductName: ProductName, ProductPrice: ProductPrice}
-    await addDoc(collectionRef, payload)
-    document.getElementById('productName').value = ''
-    document.getElementById('productPrice').value = ''
+    // const payload = { ProductName, ProductPrice, timestamp: serverTimestamp() } //also {ProductName: ProductName, ProductPrice: ProductPrice}
+    // await addDoc(collectionRef, payload)
+    // document.getElementById('productName').value = ''
+    // document.getElementById('productPrice').value = ''
+
+    if (imageUpload == null) return
+    const imageRef = ref(storage, `images/${imageUpload.name}`)
+    uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
+      await getDownloadURL(snapshot.ref).then(async (url) => {
+        const payload = {
+          ProductName: ProductName,
+          ProductPrice: ProductPrice,
+          ProductImg: url,
+          timestamp: serverTimestamp(),
+        }
+        await addDoc(collectionRef, payload)
+        document.getElementById('productName').value = ''
+        document.getElementById('productPrice').value = ''
+        setImageList([])
+
+        // setImageList((prev) => [...prev, url])
+      })
+    })
   }
+
+  // const handleNew = async () => {
+  //   var ProductName = document.getElementById('productName').value
+  //   var ProductPrice = document.getElementById('productPrice').value
+
+  //   const collectionRef = collection(firestore, 'Products')
+  //   const payload = { ProductName, ProductPrice, timestamp: serverTimestamp() } //also {ProductName: ProductName, ProductPrice: ProductPrice}
+  //   await addDoc(collectionRef, payload)
+  //   document.getElementById('productName').value = ''
+  //   document.getElementById('productPrice').value = ''
+  // }
 
   const handleEdit = async (id) => {
     const docRef = doc(firestore, 'Products', id)
@@ -77,9 +112,12 @@ const AddProducts = () => {
     updateDoc(docRef, payload)
   }
 
-  const handleDelete = async (id) => {
-    const docRef = doc(firestore, 'Products', id)
+  const handleDelete = async (dbid, img) => {
+    const docRef = doc(firestore, 'Products', dbid)
+    const imgRef = ref(storage, img)
     await deleteDoc(docRef)
+    await deleteObject(imgRef)
+    console.log(img)
   }
 
   const handleQueryDelete = async () => {
@@ -98,17 +136,6 @@ const AddProducts = () => {
 
   return (
     <div>
-      <input
-        type="file"
-        onChange={(event) => {
-          setImageUpload(event.target.files[0])
-        }}
-      />
-      <button onClick={upLoadImage}>Upload File</button>
-      {imageList.map((url) => {
-        return <img style={{ width: '14rem' }} src={url} alt="" />
-      })}
-
       <div className="example">
         <button className="button" onClick={handleQueryDelete}>
           Query Delete
@@ -126,15 +153,30 @@ const AddProducts = () => {
             placeholder="Price"
             type="number"
           />
-          <button onClick={handleNew}>Add Product</button>
+          <input
+            type="file"
+            onChange={(event) => {
+              setImageUpload(event.target.files[0])
+            }}
+          />
+          <button>Upload File</button>
+          <button onClick={addProduct}>Add Product</button>
         </div>
+        {imageList.map((url) => {
+          return <img style={{ width: '14rem' }} src={url} alt="" />
+        })}
         <ul>
           {products.map((product) => (
             <li key={product.id}>
               <h3>{product.ProductName}</h3>
               <h5>{product.ProductPrice}</h5>
+              <img style={{ width: '14rem' }} src={product.ProductImg} alt="" />
               <button onClick={() => handleEdit(product.id)}>Edit</button>
-              <button onClick={() => handleDelete(product.id)}>Delete</button>
+              <button
+                onClick={() => handleDelete(product.id, product.ProductImg)}
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
