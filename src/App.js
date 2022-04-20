@@ -15,6 +15,9 @@ function App() {
         <Imageslider />
         <ScrollableTabsButtonForce className="category" />
         <RecipeReviewCard />
+        <RecipeReviewCard />
+        <RecipeReviewCard />
+        <RecipeReviewCard />
 
         <Routes>
           <Route path="/addproducts" element={<AddProducts />} />

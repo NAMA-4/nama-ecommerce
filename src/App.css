@@ -1,12 +1,15 @@
 /* Navbar */
-
+.navbar-app {
+}
 .navbar {
+  position: sticky;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem;
-  position: fixed;
-  top: 0;
+  background-color: #fff;
+  z-index: 100;
 }
 .navbar .leftside {
 }
