@@ -2,7 +2,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Imageslider from './components/Imageslider'
 import ScrollableTabsButtonForce from './components/category'
-import TitlebarBelowImageList from './components/ContentProduct'
+import RecipeReviewCard from './components/ContentProduct'
 import { Routes, BrowserRouter, Route } from 'react-router-dom'
 
 import AddProducts from './components/AddProducts'
@@ -14,7 +14,7 @@ function App() {
         <Navbar className="navbar-app" />
         <Imageslider />
         <ScrollableTabsButtonForce className="category" />
-        <TitlebarBelowImageList />
+        <RecipeReviewCard />
 
         <Routes>
           <Route path="/addproducts" element={<AddProducts />} />
