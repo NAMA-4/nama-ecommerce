@@ -4,6 +4,7 @@ import Imageslider from './components/Imageslider'
 import ScrollableTabsButtonForce from './components/category'
 import RecipeReviewCard from './components/ContentProduct'
 import { Routes, BrowserRouter, Route } from 'react-router-dom'
+import ActionAreaCard from './components/ShopInfo'
 
 import AddProducts from './components/AddProducts'
 
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Navbar className="navbar-app" />
         <Imageslider />
+        <ActionAreaCard />
         <ScrollableTabsButtonForce className="category" />
         <RecipeReviewCard />
         <RecipeReviewCard />
