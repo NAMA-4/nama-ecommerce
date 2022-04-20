@@ -1,13 +1,12 @@
 /* Navbar */
-.navbar-app {
-  position: fixed;
-  top: 0;
-}
+
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.25rem;
+  position: fixed;
+  top: 0;
 }
 .navbar .leftside {
 }
