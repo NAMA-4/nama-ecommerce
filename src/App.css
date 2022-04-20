@@ -32,7 +32,20 @@
     padding: 0.5rem;
   }
 }
-
+/* category.js */
+.category-box {
+  padding: 1rem 1rem;
+  position: sticky;
+  top: 40%;
+  z-index: 50;
+}
+/* ShopInfo.js */
+.shop-info {
+  padding: 1rem;
+  position: sticky;
+  top: 10%;
+  z-index: 50;
+}
 /* Swiper.js */
 #app {
   height: 100%;

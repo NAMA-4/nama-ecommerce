@@ -7,7 +7,7 @@ import { CardActionArea } from '@mui/material'
 
 export default function ActionAreaCard() {
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card className="shop-info" sx={{ maxWidth: 400 }}>
       <CardActionArea>
         <CardMedia
           component="img"
