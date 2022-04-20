@@ -64,6 +64,8 @@ const AddProducts = () => {
     const collectionRef = collection(firestore, 'Products')
     const payload = { ProductName, ProductPrice, timestamp: serverTimestamp() } //also {ProductName: ProductName, ProductPrice: ProductPrice}
     await addDoc(collectionRef, payload)
+    document.getElementById('productName').value = ''
+    document.getElementById('productPrice').value = ''
   }
 
   const handleEdit = async (id) => {
