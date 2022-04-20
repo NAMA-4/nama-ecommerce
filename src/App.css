@@ -48,6 +48,16 @@
 .addproduct-form {
   padding: 1rem;
 }
+.item-card {
+  margin: 2rem 5rem;
+}
+.iteminfo {
+  margin-top: 0.25rem;
+}
+.itembutton {
+  float: right;
+  margin-left: 1rem;
+}
 .input {
   width: 100px;
   margin: 0.5rem;

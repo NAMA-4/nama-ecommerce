@@ -167,21 +167,26 @@ const AddProducts = () => {
         {/* {imageList.map((url) => {
           return <img style={{ width: '14rem' }} src={url} alt="" />
         })} */}
-        <ul>
-          {products.map((product) => (
-            <li key={product.id}>
-              <h3>{product.ProductName}</h3>
-              <h5>{product.ProductPrice}</h5>
-              <img style={{ width: '14rem' }} src={product.ProductImg} alt="" />
-              <button onClick={() => handleEdit(product.id)}>Edit</button>
-              <button
-                onClick={() => handleDelete(product.id, product.ProductImg)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+
+        {products.map((product) => (
+          <div className="item-card" key={product.id}>
+            <img style={{ width: '14rem' }} src={product.ProductImg} alt="" />
+            <h3 className="iteminfo item-name">{product.ProductName}</h3>
+            <h5 className="iteminfo item-price">{product.ProductPrice}</h5>
+            <button
+              className="iteminfo itembutton"
+              onClick={() => handleEdit(product.id)}
+            >
+              Edit
+            </button>
+            <button
+              className="iteminfo itembutton"
+              onClick={() => handleDelete(product.id, product.ProductImg)}
+            >
+              Delete
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   )
