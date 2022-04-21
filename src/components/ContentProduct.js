@@ -55,12 +55,15 @@ const ContentProduct = () => {
                     href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
                     class="btn btn-primary action"
                   >
-                    <LocalGroceryStoreRoundedIcon className="icon" />
+                    <LocalGroceryStoreRoundedIcon
+                      fontSize="small"
+                      className="icon"
+                    />
                   </a>
                 </button>
                 <button className="btn btn2">
                   <a href="tel:09455406870">
-                    <PhoneRoundedIcon />
+                    <PhoneRoundedIcon fontSize="small" />
                   </a>
                 </button>
                 <button className="btn btn3">Review</button>
