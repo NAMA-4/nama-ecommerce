@@ -20,7 +20,7 @@ const Navbar = () => {
       </div>
       <div className="center-logo">
         <img className="logo-img" src="./img/NaMa.png" alt="logo" />
-        <h3>Online Market</h3>
+        <h3 className="logo-text">Online Market</h3>
       </div>
       <div className="rightside">
         <SearchRoundedIcon />

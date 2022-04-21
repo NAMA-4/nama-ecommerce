@@ -11,13 +11,14 @@ export default function ActionAreaCard() {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
-          image="./img/1 (4).png"
+          height="320"
+          image="./img/shop.jpg"
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent className="shop-name">
           <Typography gutterBottom variant="h5" component="div">
-            နွေမိုးဆောင်း Korean Cosmeticss
+            <div className="name">Nwe Moe Saung Korean</div>
+            <dive className="name">Cosmetics Paradise</dive>
           </Typography>
         </CardContent>
       </CardActionArea>
