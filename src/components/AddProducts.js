@@ -23,6 +23,15 @@ import {
 } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import { CardActionArea } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
+import ImageIcon from '@mui/icons-material/Image'
+
 const AddProducts = () => {
   const [imageUpload, setImageUpload] = useState(null)
   // const [imageList, setImageList] = useState([])
@@ -142,6 +151,7 @@ const AddProducts = () => {
           Query Delete
         </button> */}
         <div className="addproduct-form">
+          <label className="title-addproduct">Add New Product</label>
           <input
             className="input"
             id="productName"
@@ -154,22 +164,75 @@ const AddProducts = () => {
             placeholder="Price"
             type="number"
           />
-          <input
-            type="file"
-            id="productImg"
-            onChange={(event) => {
-              setImageUpload(event.target.files[0])
-            }}
-          />
+          <label className="fileUpload">
+            <ImageIcon fontSize="large" />
+            <input
+              type="file"
+              placeholder="select file"
+              id="productImg"
+              onChange={(event) => {
+                setImageUpload(event.target.files[0])
+              }}
+            />
+          </label>
           {/* <button>Upload File</button> */}
-          <button onClick={addProduct}>Add Product</button>
+          <button className="addproduct-btn" onClick={addProduct}>
+            Add Product
+          </button>
         </div>
         {/* {imageList.map((url) => {
           return <img style={{ width: '14rem' }} src={url} alt="" />
         })} */}
 
         {products.map((product) => (
-          <div className="item-card" key={product.id}>
+          <Card sx={{ maxWidth: 400 }}>
+            <CardActionArea>
+              <CardMedia
+                className="item-img"
+                component="img"
+                image={product.ProductImg}
+                alt="green iguana"
+              />
+              <CardContent className="card-content">
+                <Typography
+                  className="card-text text1"
+                  gutterBottom
+                  component="div"
+                >
+                  {product.ProductName} | {product.ProductPrice} MMK
+                </Typography>
+                {/* <Typography className="card-text " variant="body2">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography> */}
+                <div className="call-action">
+                  <button
+                    className="btn-addproduct"
+                    onClick={() => handleDelete(product.id, product.ProductImg)}
+                  >
+                    <DeleteIcon fontSize="small" />
+                  </button>
+                  <button
+                    className="btn-addproduct"
+                    onClick={() => handleEdit(product.id)}
+                  >
+                    <EditIcon fontSize="small" className="icon" />
+                  </button>
+
+                  {/* <button className="btn btn3">Review</button> */}
+                </div>
+              </CardContent>
+            </CardActionArea>
+          </Card>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default AddProducts
+
+/* <div className="item-card" key={product.id}>
             <div>
               <img className="item-img" src={product.ProductImg} alt="" />
             </div>
@@ -189,11 +252,4 @@ const AddProducts = () => {
             >
               Delete
             </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-export default AddProducts
+          </div> */

@@ -47,34 +47,43 @@
 /* AddProduct.js & ContentProduct.js */
 .addproduct-form {
   padding: 1rem;
-}
-.item-card {
-  padding: 1rem;
-  /* margin: 0 1rem; */
-  border-radius: 5px;
-  background-color: rgba(66, 62, 62, 0.116);
+  background-color: rgb(244, 167, 51);
   text-align: center;
 }
-.item-info {
-  margin-top: 0;
-  background-color: rgb(235, 126, 23);
-}
-.iteminfo {
-  margin-top: 0.25rem;
-}
-.itembutton {
-  float: right;
-  margin-left: 1rem;
-}
-.item-img {
-  width: 20rem;
-  border-radius: 5px;
-  margin-bottom: 0;
-  padding-bottom: 0;
+.title-addproduct {
+  font-size: 1.5rem;
+  color: #fff;
 }
 .input {
-  width: 100px;
-  margin: 0.5rem;
+  width: 200px;
+  margin: 0.5rem 2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  border: none;
+  display: inline-block;
+}
+
+input[type='file'] {
+  display: none;
+}
+.fileUpload {
+  background-color: #fff;
+  width: 200px;
+  display: block;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  color: rgb(244, 167, 51);
+  border-radius: 15px;
+  margin: 0 5rem;
+}
+.addproduct-btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: none;
+  color: rgb(244, 167, 51);
+  margin: 1rem 7.5rem;
+  border-radius: 5px;
 }
 .card-content {
   background-color: rgb(89, 175, 251);
@@ -102,6 +111,15 @@
 .icon {
   /* font-size: 1rem; */
   font-size: small;
+}
+.btn-addproduct {
+  position: relative;
+  right: -75%;
+  margin-top: 0;
+  margin-right: 10px;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
 }
 
 /* Swiper.js */
