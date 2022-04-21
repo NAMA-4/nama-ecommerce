@@ -30,8 +30,8 @@ const ContentProduct = () => {
         <Card sx={{ maxWidth: 400 }}>
           <CardActionArea>
             <CardMedia
+              className="item-img"
               component="img"
-              height="350"
               image={product.ProductImg}
               alt="green iguana"
             />
