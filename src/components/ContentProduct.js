@@ -11,6 +11,8 @@ import { CardActionArea } from '@mui/material'
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
 
+import ReviewModal from './ReviewModal'
+
 const ContentProduct = () => {
   const [products, setProducts] = useState([
     { ProductName: 'Loading...', id: 'initial' },
@@ -66,7 +68,9 @@ const ContentProduct = () => {
                     <PhoneRoundedIcon fontSize="small" />
                   </a>
                 </button>
-                <button className="btn btn3">Review</button>
+                <button className="btn btn3">
+                  <ReviewModal />
+                </button>
               </div>
             </CardContent>
           </CardActionArea>
