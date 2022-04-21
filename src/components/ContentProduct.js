@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react'
 import { firestore } from '../config/firebase'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Typography from '@mui/material/Typography'
+import { CardActionArea } from '@mui/material'
+
 const ContentProduct = () => {
   const [products, setProducts] = useState([
     { ProductName: 'Loading...', id: 'initial' },
@@ -21,15 +27,30 @@ const ContentProduct = () => {
   return (
     <div>
       {products.map((product) => (
-        <div className="item-card" key={product.id}>
-          <div>
-            <img className="item-img" src={product.ProductImg} alt="" />
-          </div>
-          <div className="item-info">
-            <h3 className="iteminfo item-name">{product.ProductName}</h3>
-            <h5 className="iteminfo item-price">{product.ProductPrice}</h5>
-          </div>
-        </div>
+        <Card sx={{ maxWidth: 400 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="350"
+              image={product.ProductImg}
+              alt="green iguana"
+            />
+            <CardContent className="card-content">
+              <Typography
+                className="card-text text1"
+                gutterBottom
+                component="div"
+              >
+                Product Name: {product.ProductName} Product Price:
+                {product.ProductPrice}
+              </Typography>
+              <Typography className="card-text " variant="body2">
+                Lizards are a widespread group of squamate reptiles, with over
+                6,000 species, ranging across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
       ))}
     </div>
   )

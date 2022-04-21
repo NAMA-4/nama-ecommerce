@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar className="navbar-app" />
-        <Imageslider />
         <ActionAreaCard />
+        <Imageslider />
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
           <Route path="/addproducts" element={<AddProducts />} />
