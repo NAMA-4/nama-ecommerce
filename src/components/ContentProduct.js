@@ -8,6 +8,8 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
+import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
+import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
 
 const ContentProduct = () => {
   const [products, setProducts] = useState([
@@ -48,8 +50,19 @@ const ContentProduct = () => {
                 6,000 species, ranging across all continents except Antarctica
               </Typography> */}
               <div className="call-action">
-                <button className="btn btn1">မှာယူရန်</button>
-                <button className="btn btn2">ဖုန်း</button>
+                <button className="btn btn1">
+                  <a
+                    href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
+                    class="btn btn-primary action"
+                  >
+                    <LocalGroceryStoreRoundedIcon className="icon" />
+                  </a>
+                </button>
+                <button className="btn btn2">
+                  <a href="tel:09455406870">
+                    <PhoneRoundedIcon />
+                  </a>
+                </button>
                 <button className="btn btn3">Review</button>
               </div>
             </CardContent>

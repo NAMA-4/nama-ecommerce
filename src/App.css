@@ -96,7 +96,14 @@
 .btn3 {
   float: right;
   font-size: 1rem;
-  height: 2.5rem;
+  height: 2.8rem;
+}
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 /* Swiper.js */
