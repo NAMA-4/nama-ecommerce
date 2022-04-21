@@ -41,13 +41,17 @@ const ContentProduct = () => {
                 gutterBottom
                 component="div"
               >
-                Product Name: {product.ProductName} Product Price:
-                {product.ProductPrice}
+                {product.ProductName} | {product.ProductPrice} MMK
               </Typography>
-              <Typography className="card-text " variant="body2">
+              {/* <Typography className="card-text " variant="body2">
                 Lizards are a widespread group of squamate reptiles, with over
                 6,000 species, ranging across all continents except Antarctica
-              </Typography>
+              </Typography> */}
+              <div className="call-action">
+                <button className="btn btn1">မှာယူရန်</button>
+                <button className="btn btn2">ဖုန်း</button>
+                <button className="btn btn3">Review</button>
+              </div>
             </CardContent>
           </CardActionArea>
         </Card>

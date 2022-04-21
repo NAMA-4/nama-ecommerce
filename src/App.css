@@ -85,6 +85,19 @@
 .text1 {
   font-size: 2rem;
 }
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: none;
+}
+.btn1 {
+  margin-right: 10px;
+}
+.btn3 {
+  float: right;
+  font-size: 1rem;
+  height: 2.5rem;
+}
 
 /* Swiper.js */
 #app {
