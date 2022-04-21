@@ -3,7 +3,7 @@ import { storage, firestore } from '../config/firebase'
 import {
   ref,
   uploadBytes,
-  listAll,
+  // listAll,
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage'
@@ -15,8 +15,8 @@ import {
   doc,
   deleteDoc,
   query,
-  where,
-  getDocs,
+  // where,
+  // getDocs,
   serverTimestamp,
   orderBy,
   updateDoc,
@@ -41,16 +41,16 @@ const AddProducts = () => {
   //   })
   // }
 
-  useEffect(() => {
-    const imageListRef = ref(storage, 'images/')
-    listAll(imageListRef).then((response) => {
-      response.items.forEach((item) => {
-        getDownloadURL(item).then((url) => {
-          // setImageList((prev) => [...prev, url])
-        })
-      })
-    })
-  }, [])
+  // useEffect(() => {
+  //   const imageListRef = ref(storage, 'images/')
+  //   listAll(imageListRef).then((response) => {
+  //     response.items.forEach((item) => {
+  //       getDownloadURL(item).then((url) => {
+  //         // setImageList((prev) => [...prev, url])
+  //       })
+  //     })
+  //   })
+  // }, [])
 
   useEffect(() => {
     const collectionRef = collection(firestore, 'Products')
@@ -121,26 +121,26 @@ const AddProducts = () => {
     console.log(img)
   }
 
-  const handleQueryDelete = async () => {
-    const ProductName = prompt('Enter product name to delete')
+  // const handleQueryDelete = async () => {
+  //   const ProductName = prompt('Enter product name to delete')
 
-    const collectionRef = collection(firestore, 'Products')
-    const q = query(collectionRef, where('ProductName', '==', ProductName))
+  //   const collectionRef = collection(firestore, 'Products')
+  //   const q = query(collectionRef, where('ProductName', '==', ProductName))
 
-    const snapshot = await getDocs(q)
-    const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    results.forEach(async (result) => {
-      const docRef = doc(firestore, 'Products', result.id)
-      await deleteDoc(docRef)
-    })
-  }
+  //   const snapshot = await getDocs(q)
+  //   const results = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+  //   results.forEach(async (result) => {
+  //     const docRef = doc(firestore, 'Products', result.id)
+  //     await deleteDoc(docRef)
+  //   })
+  // }
 
   return (
     <div>
       <div className="example">
-        <button className="button" onClick={handleQueryDelete}>
+        {/* <button className="button" onClick={handleQueryDelete}>
           Query Delete
-        </button>
+        </button> */}
         <div className="addproduct-form">
           <input
             className="input"
@@ -170,9 +170,13 @@ const AddProducts = () => {
 
         {products.map((product) => (
           <div className="item-card" key={product.id}>
-            <img style={{ width: '14rem' }} src={product.ProductImg} alt="" />
-            <h3 className="iteminfo item-name">{product.ProductName}</h3>
-            <h5 className="iteminfo item-price">{product.ProductPrice}</h5>
+            <div>
+              <img className="item-img" src={product.ProductImg} alt="" />
+            </div>
+            <div className="item-info">
+              <h3 className="iteminfo item-name">{product.ProductName}</h3>
+              <h5 className="iteminfo item-price">{product.ProductPrice}</h5>
+            </div>
             <button
               className="iteminfo itembutton"
               onClick={() => handleEdit(product.id)}
