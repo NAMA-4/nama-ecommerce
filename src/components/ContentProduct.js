@@ -6,7 +6,7 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
-// import Typography from '@mui/material/Typography'
+import Typography from '@mui/material/Typography'
 import { CardActionArea } from '@mui/material'
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
@@ -40,9 +40,13 @@ const ContentProduct = () => {
               alt="green iguana"
             />
             <CardContent className="card-content">
-              <div>
+              <Typography
+                className="card-text text1"
+                gutterBottom
+                component="div"
+              >
                 {product.ProductName} | {product.ProductPrice} MMK
-              </div>
+              </Typography>
 
               <div className="call-action">
                 <button className="btn btn1">
