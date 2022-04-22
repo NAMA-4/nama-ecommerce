@@ -16,7 +16,7 @@ function App() {
         <Imageslider />
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
-          <Route path="/addproducts" element={<AddProducts />} />
+          <Route path="/4" element={<AddProducts />} />
           <Route path="/" element={<ContentProduct />} />
         </Routes>
       </BrowserRouter>

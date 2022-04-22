@@ -69,7 +69,10 @@ const ContentProduct = () => {
                   </a>
                 </button>
                 <button className="btn btn3">
-                  <ReviewModal />
+                  <ReviewModal
+                    productReview={product.ProductReview}
+                    productName={product.ProductName}
+                  />
                 </button>
               </div>
             </CardContent>

@@ -75,6 +75,11 @@
 input[type='file'] {
   display: none;
 }
+.review-text {
+  border: none;
+  border-radius: 10px;
+  padding: 2rem;
+}
 .fileUpload {
   background-color: #fff;
   width: 200px;
@@ -129,6 +134,14 @@ input[type='file'] {
   padding: 0.5rem;
   border-radius: 5px;
   border: none;
+}
+/* ReviewModal.js */
+.modal-review {
+  background-color: rgb(89, 175, 251);
+  color: #fff;
+}
+.modal-review .text-color {
+  color: #fff;
 }
 
 /* Swiper.js */
