@@ -143,6 +143,9 @@ input[type='file'] {
 .modal-review .text-color {
   color: #fff;
 }
+.review-text {
+  font-family: 'Noto Sans Myanmar', sans-serif;
+}
 
 /* Swiper.js */
 #app {

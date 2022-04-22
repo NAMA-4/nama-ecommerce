@@ -51,7 +51,7 @@ export default function ReviewModal(props) {
               ref={descriptionElementRef}
               tabIndex={-1}
             >
-              <p>{props.productReview}</p>
+              <p className="review-text">{props.productReview}</p>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
