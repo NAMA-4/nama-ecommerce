@@ -6,6 +6,7 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage'
+import ReviewModal from './ReviewModal'
 
 import {
   onSnapshot,
@@ -157,16 +158,22 @@ const AddProducts = () => {
               </Typography> */}
                 <div className="call-action">
                   <button
-                    className="btn-addproduct"
+                    className="btn btn1"
                     onClick={() => handleDelete(product.id, product.ProductImg)}
                   >
                     <DeleteIcon fontSize="small" />
                   </button>
                   <button
-                    className="btn-addproduct"
+                    className="btn btn2"
                     onClick={() => handleEdit(product.id)}
                   >
                     <EditIcon fontSize="small" className="icon" />
+                  </button>
+                  <button className="btn btn3">
+                    <ReviewModal
+                      productReview={product.ProductReview}
+                      productName={product.ProductName}
+                    />
                   </button>
 
                   {/* <button className="btn btn3">Review</button> */}
