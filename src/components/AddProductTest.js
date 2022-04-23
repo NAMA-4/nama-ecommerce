@@ -30,14 +30,15 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import EditIcon from '@mui/icons-material/Edit'
 import ImageIcon from '@mui/icons-material/Image'
 
-const AddProducts = () => {
+const AddProducts = (props) => {
   const [imageUpload, setImageUpload] = useState(null)
   const [products, setProducts] = useState([
     { ProductName: 'Loading...', id: 'initial' },
   ])
+  let productCollection = props.productCollection
 
   useEffect(() => {
-    const collectionRef = collection(firestore, 'Products')
+    const collectionRef = collection(firestore, productCollection)
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const unsub = onSnapshot(q, (snapshot) => {
       setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -51,7 +52,7 @@ const AddProducts = () => {
     var ProductPrice = document.getElementById('productPrice').value
     var ProductReview = document.getElementById('productReview').value
 
-    const collectionRef = collection(firestore, 'Products')
+    const collectionRef = collection(firestore, productCollection)
 
     if (imageUpload == null) return
     const imageRef = ref(storage, `images/${imageUpload.name}`)
@@ -74,7 +75,7 @@ const AddProducts = () => {
   }
 
   const handleEdit = async (id) => {
-    const docRef = doc(firestore, 'Products', id)
+    const docRef = doc(firestore, productCollection, id)
     const ProductName = prompt('Edit product name')
     const ProductPrice = prompt('Edit product price')
 
@@ -83,7 +84,7 @@ const AddProducts = () => {
   }
 
   const handleDelete = async (dbid, img) => {
-    const docRef = doc(firestore, 'Products', dbid)
+    const docRef = doc(firestore, productCollection, dbid)
     const imgRef = ref(storage, img)
     await deleteDoc(docRef)
     await deleteObject(imgRef)
