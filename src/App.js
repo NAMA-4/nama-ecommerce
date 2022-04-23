@@ -4,8 +4,9 @@ import Navbar from './components/Navbar'
 // import ScrollableTabsButtonForce from './components/category'
 import { Routes, BrowserRouter, Route } from 'react-router-dom'
 import ShopInfo from './components/ShopInfo'
-import ContentProduct from './components/ContentProduct'
+// import ContentProduct from './components/ContentProduct'
 import AddProducts from './components/AddProducts'
+import Home from './components/Home'
 
 import AddProductTest from './components/AddProductTest'
 
@@ -17,6 +18,8 @@ function App() {
         {/* <Imageslider /> */}
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
+          <Route path="/" element={<Home shopTitle="NAMA" />} />
+
           <Route path="/4" element={<AddProducts />} />
           <Route
             path="/14"
@@ -30,16 +33,15 @@ function App() {
           <Route
             path="/24"
             element={
-              <AddProductTest shopTitle="NAMA-Test" productCollection="2" />
+              <AddProductTest shopTitle="NAMA-Vape&Pod" productCollection="2" />
             }
           />
           <Route
-            path="/10"
+            path="/test"
             element={
               <AddProductTest shopTitle="NAMA-Test" productCollection="10" />
             }
           />
-          <Route path="/" element={<ContentProduct />} />
           <Route
             path="/1"
             element={
