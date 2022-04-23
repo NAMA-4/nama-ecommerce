@@ -37,6 +37,8 @@ const AddProducts = (props) => {
   ])
   let productCollection = props.productCollection
 
+  document.title = props.shopTitle
+
   useEffect(() => {
     const collectionRef = collection(firestore, productCollection)
     const q = query(collectionRef, orderBy('timestamp', 'desc'))

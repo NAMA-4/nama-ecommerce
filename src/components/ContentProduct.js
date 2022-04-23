@@ -21,13 +21,15 @@ import {
 import ProductCard from './ProductCard'
 import Imageslider from './Imageslider'
 
-const ContentProduct = () => {
+const ContentProduct = (props) => {
   const [products, setProducts] = useState([
     { ProductName: 'Loading...', id: 'initial' },
   ])
 
+  let productCollection = props.productCollection
+
   useEffect(() => {
-    const collectionRef = collection(firestore, 'Products')
+    const collectionRef = collection(firestore, productCollection)
     const q = query(
       collectionRef,
       orderBy('timestamp', 'desc'),
@@ -38,7 +40,7 @@ const ContentProduct = () => {
     })
 
     return unsub
-  }, [])
+  }, [productCollection])
 
   return (
     <div>
@@ -50,50 +52,6 @@ const ContentProduct = () => {
           productImg={product.ProductImg}
           productReview={product.ProductReview}
         />
-        // <Card sx={{ maxWidth: 400 }}>
-        //   <CardActionArea>
-        //     <CardMedia
-        //       className="item-img"
-        //       component="img"
-        //       image={product.ProductImg}
-        //       alt="green iguana"
-        //     />
-        //     <CardContent className="card-content">
-        //       <Typography
-        //         className="card-text text1"
-        //         gutterBottom
-        //         component="div"
-        //       >
-        //         {product.ProductName} | {product.ProductPrice} MMK
-        //       </Typography>
-
-        //       <div className="call-action">
-        //         <button className="btn btn1">
-        //           <a
-        //             href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
-        //             class="btn btn-primary action"
-        //           >
-        //             <LocalGroceryStoreRoundedIcon
-        //               fontSize="small"
-        //               className="icon"
-        //             />
-        //           </a>
-        //         </button>
-        //         <button className="btn btn2">
-        //           <a href="tel:09455406870">
-        //             <PhoneRoundedIcon fontSize="small" />
-        //           </a>
-        //         </button>
-        //         <button className="btn btn3">
-        //           <ReviewModal
-        //             productReview={product.ProductReview}
-        //             productName={product.ProductName}
-        //           />
-        //         </button>
-        //       </div>
-        //     </CardContent>
-        //   </CardActionArea>
-        // </Card>
       ))}
     </div>
   )

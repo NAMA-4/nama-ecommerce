@@ -19,13 +19,22 @@ function App() {
         <Routes>
           <Route path="/4" element={<AddProducts />} />
           <Route
-            path="/test"
+            path="/14"
+            element={
+              <AddProductTest
+                shopTitle="NAMA-Nwe Moe Saung"
+                productCollection="Products"
+              />
+            }
+          />
+          <Route
+            path="/24"
             element={
               <AddProductTest shopTitle="NAMA-Test" productCollection="2" />
             }
           />
           <Route
-            path="/test10"
+            path="/10"
             element={
               <AddProductTest shopTitle="NAMA-Test" productCollection="10" />
             }
@@ -38,9 +47,11 @@ function App() {
                 shopImg="./img/shop1.jpg"
                 shopName="Nwe Moe Saung Korean Cosmetics Paradise"
                 shopTitle="NAMA-Nwe Moe Saung"
+                productCollection="Products"
               />
             }
           />
+
           <Route
             path="/2"
             element={
@@ -48,6 +59,7 @@ function App() {
                 shopImg="./img/shop2.jpg"
                 shopName="KT Vape & Pod Zone"
                 shopTitle="NAMA-Vape&Pod"
+                productCollection="2"
               />
             }
           />
