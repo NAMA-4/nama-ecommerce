@@ -45,7 +45,7 @@ const AddProducts = (props) => {
     })
 
     return unsub
-  }, [])
+  }, [productCollection])
 
   const addProduct = () => {
     var ProductName = document.getElementById('productName').value
