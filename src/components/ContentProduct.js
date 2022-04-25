@@ -85,20 +85,6 @@ const ContentProduct = (props) => {
           </Tabs>
         </Box>
 
-        {/* <div className="categoryBar">
-          {props.productType.map((productType) => (
-            <button
-              id="categoryItem"
-              className="categoryItem"
-              type="button"
-              onClick={() => {
-                handleCategory(productType)
-              }}
-            >
-              {productType}
-            </button>
-          ))}
-        </div> */}
         {products.map((product) => (
           <>
             <ProductCard
