@@ -9,12 +9,21 @@ import {
   where,
 } from 'firebase/firestore'
 
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box'
+
 import ProductCard from './ProductCard'
 
 const ContentProduct = (props) => {
   const [products, setProducts] = useState([
     { ProductName: 'Loading...', id: 'initial' },
   ])
+
+  const [value, setValue] = React.useState(0)
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
+  }
 
   let productCollection = props.productCollection
 
@@ -38,6 +47,7 @@ const ContentProduct = (props) => {
     onSnapshot(q, (snapshot) => {
       setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     })
+
     var activeBtn = document.getElementById('categoryItem')
     activeBtn.classList.add('activeBtn')
     // const filterResult = products.filter((product) => {
@@ -51,7 +61,30 @@ const ContentProduct = (props) => {
   if (isProductType) {
     return (
       <div>
-        <div className="categoryBar">
+        <Box
+          sx={{ maxWidth: { xs: 400, sm: 480 }, bgcolor: 'background.paper' }}
+        >
+          <Tabs
+            className="categoryBar"
+            value={value}
+            onChange={handleChange}
+            variant="scrollable"
+            scrollButtons
+            allowScrollButtonsMobile
+            aria-label="scrollable force tabs example"
+          >
+            {props.productType.map((productType) => (
+              <Tab
+                onClick={() => {
+                  handleCategory(productType)
+                }}
+                label={productType}
+              />
+            ))}
+          </Tabs>
+        </Box>
+        )
+        {/* <div className="categoryBar">
           {props.productType.map((productType) => (
             <button
               id="categoryItem"
@@ -64,8 +97,7 @@ const ContentProduct = (props) => {
               {productType}
             </button>
           ))}
-        </div>
-
+        </div> */}
         {products.map((product) => (
           <>
             <ProductCard
