@@ -26,7 +26,10 @@ export default function ShopInfo(props) {
           </CardContent>
         </CardActionArea>
       </Card>
-      <ContentProduct productCollection={props.productCollection} />
+      <ContentProduct
+        productCollection={props.productCollection}
+        productType={props.productType}
+      />
     </>
   )
 }

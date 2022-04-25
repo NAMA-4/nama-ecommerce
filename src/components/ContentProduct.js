@@ -6,7 +6,7 @@ import {
   onSnapshot,
   orderBy,
   query,
-  // where,
+  where,
 } from 'firebase/firestore'
 
 import ProductCard from './ProductCard'
@@ -28,18 +28,65 @@ const ContentProduct = (props) => {
     return unsub
   }, [productCollection])
 
-  return (
-    <div>
-      {products.map((product) => (
-        <ProductCard
-          productName={product.ProductName}
-          productPrice={product.ProductPrice}
-          productImg={product.ProductImg}
-          productReview={product.ProductReview}
-        />
-      ))}
-    </div>
-  )
+  const handleCategory = (type) => {
+    const collectionRef = collection(firestore, '2')
+    const q = query(
+      collectionRef,
+      where('ProductType', '==', type),
+      orderBy('timestamp', 'desc'),
+    )
+    onSnapshot(q, (snapshot) => {
+      setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    })
+    // const filterResult = products.filter((product) => {
+    //   return product.productType === type
+    // })
+    // setData(filterResult)
+  }
+
+  const isProductType = props.productType
+
+  if (isProductType) {
+    return (
+      <div>
+        {props.productType.map((productType) => (
+          <button
+            onClick={() => {
+              handleCategory(productType)
+            }}
+          >
+            {productType}
+          </button>
+        ))}
+
+        {products.map((product) => (
+          <>
+            <ProductCard
+              productName={product.ProductName}
+              productPrice={product.ProductPrice}
+              productImg={product.ProductImg}
+              productReview={product.ProductReview}
+            />
+          </>
+        ))}
+      </div>
+    )
+  } else {
+    return (
+      <>
+        {products.map((product) => (
+          <>
+            <ProductCard
+              productName={product.ProductName}
+              productPrice={product.ProductPrice}
+              productImg={product.ProductImg}
+              productReview={product.ProductReview}
+            />
+          </>
+        ))}
+      </>
+    )
+  }
 }
 
 export default ContentProduct
