@@ -62,6 +62,7 @@ const ContentProduct = (props) => {
     return (
       <div>
         <Box
+          className="categoryBox"
           sx={{ maxWidth: { xs: 400, sm: 480 }, bgcolor: 'background.paper' }}
         >
           <Tabs
@@ -83,7 +84,7 @@ const ContentProduct = (props) => {
             ))}
           </Tabs>
         </Box>
-        )
+
         {/* <div className="categoryBar">
           {props.productType.map((productType) => (
             <button
