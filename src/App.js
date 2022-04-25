@@ -9,7 +9,6 @@ import AddProducts from './components/AddProducts'
 import Home from './components/Home'
 
 import AddProductTest from './components/AddProductTest'
-import Category from './components/Category'
 
 function App() {
   return (
@@ -43,12 +42,7 @@ function App() {
               <AddProductTest shopTitle="NAMA-Test" productCollection="10" />
             }
           />
-          <Route
-            path="/test2"
-            element={
-              <Category productType={['vape', 'pod', 'sample', 'sample']} />
-            }
-          />
+
           <Route
             path="/1"
             element={
