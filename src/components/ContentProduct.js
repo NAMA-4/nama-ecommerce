@@ -51,7 +51,7 @@ const ContentProduct = (props) => {
       <div>
         <div className="categoryBar">
           {props.productType.map((productType) => (
-            <label
+            <button
               className="categoryItem"
               type="button"
               onClick={() => {
@@ -59,7 +59,7 @@ const ContentProduct = (props) => {
               }}
             >
               {productType}
-            </label>
+            </button>
           ))}
         </div>
 
