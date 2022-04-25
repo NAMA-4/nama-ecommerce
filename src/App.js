@@ -63,7 +63,7 @@ function App() {
                 shopName="KT Vape & Pod Zone"
                 shopTitle="NAMA-Vape&Pod"
                 productCollection="2"
-                productType={['vape', 'pod', 'sample', 'sample']}
+                productType={['vape', 'pod', 'ဆက်စပ်ပစ္စည်း']}
               />
             }
           />

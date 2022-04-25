@@ -49,15 +49,19 @@ const ContentProduct = (props) => {
   if (isProductType) {
     return (
       <div>
-        {props.productType.map((productType) => (
-          <button
-            onClick={() => {
-              handleCategory(productType)
-            }}
-          >
-            {productType}
-          </button>
-        ))}
+        <div className="categoryBar">
+          {props.productType.map((productType) => (
+            <label
+              className="categoryItem"
+              type="button"
+              onClick={() => {
+                handleCategory(productType)
+              }}
+            >
+              {productType}
+            </label>
+          ))}
+        </div>
 
         {products.map((product) => (
           <>
