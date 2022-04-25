@@ -51,6 +51,7 @@ function App() {
                 shopName="Nwe Moe Saung Korean Cosmetics Paradise"
                 shopTitle="NAMA-Nwe Moe Saung"
                 productCollection="Products"
+                productType={['SkinCare', 'Tonner', 'Lipstick']}
               />
             }
           />

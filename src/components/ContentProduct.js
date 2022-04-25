@@ -47,13 +47,6 @@ const ContentProduct = (props) => {
     onSnapshot(q, (snapshot) => {
       setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     })
-
-    var activeBtn = document.getElementById('categoryItem')
-    activeBtn.classList.add('activeBtn')
-    // const filterResult = products.filter((product) => {
-    //   return product.productType === type
-    // })
-    // setData(filterResult)
   }
 
   const isProductType = props.productType
