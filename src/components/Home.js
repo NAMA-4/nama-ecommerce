@@ -110,27 +110,43 @@ const JustForYou = () => {
       <div className="foryou-box">
         <div className="first-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
         </div>
         <div className="second-column">
           <img className="product-img" src="./img/1 (5).png" alt="" />
