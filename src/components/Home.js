@@ -10,6 +10,7 @@ const Home = (props) => {
       <FoodProductCategory />
       <RecentlyAdded />
       <EditorChoice />
+      <JustForYou />
       {/* <ContentProduct productCollection="Products" /> */}
     </div>
   )
@@ -96,6 +97,46 @@ const EditorChoice = () => {
           <img src="./img/1 (2).png" alt="" />
           <span>P Name</span>
           <span>P Price</span>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const JustForYou = () => {
+  return (
+    <>
+      <h3 className="category-label">Just For You</h3>
+      <div className="foryou-box">
+        <div className="first-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
+        </div>
+        <div className="second-column">
+          <img className="product-img" src="./img/1 (5).png" alt="" />
         </div>
       </div>
     </>

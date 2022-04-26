@@ -70,11 +70,22 @@
 }
 .recently-added-box .card-box img {
   width: 14rem;
+  border-radius: 15px;
 }
 .recently-added-box .card-box {
   display: flex;
   flex-direction: column;
   padding: 1rem;
+}
+.foryou-box {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.foryou-box .product-img {
+  width: 11rem;
 }
 /* category.js */
 .category-box {
