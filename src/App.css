@@ -46,6 +46,9 @@
 .shop-info {
   position: sticky;
 }
+.shop-img {
+  width: 10rem;
+}
 .shop-name {
   background-color: rgb(89, 175, 251);
   color: #fff;

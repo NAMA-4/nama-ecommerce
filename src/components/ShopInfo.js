@@ -15,7 +15,7 @@ export default function ShopInfo(props) {
         <CardActionArea>
           <CardMedia
             component="img"
-            height="320"
+            className='shop-img'
             image={props.shopImg}
             alt="green iguana"
           />
