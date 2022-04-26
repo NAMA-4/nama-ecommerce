@@ -9,6 +9,7 @@ const Home = (props) => {
       <Imageslider />
       <FoodProductCategory />
       <RecentlyAdded />
+      <EditorChoice />
       {/* <ContentProduct productCollection="Products" /> */}
     </div>
   )
@@ -35,6 +36,41 @@ const RecentlyAdded = () => {
   return (
     <>
       <h3 className="category-label">Recently Added</h3>
+      <div className="recently-added-box">
+        <div className="card-box">
+          <img src="./img/1 (3).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
+        </div>
+        <div className="card-box">
+          <img src="./img/1 (6).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
+        </div>
+        <div className="card-box">
+          <img src="./img/1 (4).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
+        </div>
+        <div className="card-box">
+          <img src="./img/1 (1).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
+        </div>
+        <div className="card-box">
+          <img src="./img/1 (2).png" alt="" />
+          <span>P Name</span>
+          <span>P Price</span>
+        </div>
+      </div>
+    </>
+  )
+}
+
+const EditorChoice = () => {
+  return (
+    <>
+      <h3 className="category-label">EditorChoice</h3>
       <div className="recently-added-box">
         <div className="card-box">
           <img src="./img/1 (3).png" alt="" />

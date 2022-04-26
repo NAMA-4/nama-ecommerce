@@ -60,6 +60,7 @@
 }
 .category-label {
   color: rgb(89, 175, 251);
+  margin: 1rem 0 0.5rem 1rem;
 }
 .recently-added-box {
   display: flex;
