@@ -47,6 +47,7 @@ const ContentProduct = (props) => {
     onSnapshot(q, (snapshot) => {
       setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     })
+    window.scrollTo(0, 300)
   }
 
   const isProductType = props.productType
