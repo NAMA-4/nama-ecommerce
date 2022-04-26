@@ -14,26 +14,26 @@ import { Autoplay, Pagination, Navigation } from 'swiper'
 export default function Imageslider() {
   return (
     <>
-      {data.map((val) => (
-        <Swiper
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {data.map((val) => (
           <SwiperSlide>
-            <img src={val} alt="" />
+            <img src={val.img} alt="" />
           </SwiperSlide>
-        </Swiper>
-      ))}
+        ))}
+      </Swiper>
     </>
   )
 }
