@@ -58,6 +58,23 @@
 .product-img {
   width: 3rem;
 }
+.category-label {
+  color: rgb(89, 175, 251);
+}
+.recently-added-box {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  color: rgb(89, 175, 251);
+}
+.recently-added-box .card-box img {
+  width: 14rem;
+}
+.recently-added-box .card-box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
 /* category.js */
 .category-box {
   padding: 1rem 1rem;
