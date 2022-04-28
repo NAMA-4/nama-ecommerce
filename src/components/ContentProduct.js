@@ -38,7 +38,7 @@ const ContentProduct = (props) => {
   }, [productCollection])
 
   const handleCategory = (type) => {
-    const collectionRef = collection(firestore, '2')
+    const collectionRef = collection(firestore, productCollection)
     const q = query(
       collectionRef,
       where('ProductType', '==', type),
@@ -82,6 +82,7 @@ const ContentProduct = (props) => {
         {products.map((product) => (
           <>
             <ProductCard
+              productId={product.ProductId}
               productName={product.ProductName}
               productPrice={product.ProductPrice}
               productImg={product.ProductImg}

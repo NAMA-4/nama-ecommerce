@@ -36,16 +36,21 @@
   }
 }
 /* Home.js */
+.link {
+  text-decoration: none;
+}
 .food-product-box {
-  display: flex;
-  padding: 1rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
   gap: 1rem;
+  padding: 1rem;
 }
 .food,
 .product {
   text-align: center;
   background-color: #fff;
-  width: 13rem;
+  width: 7rem;
   padding: 0.5rem;
   border-radius: 15px;
   color: rgb(89, 175, 251);
@@ -87,6 +92,7 @@
 .foryou-box .product-img {
   width: 11rem;
 }
+
 /* category.js */
 .category-box {
   padding: 1rem 1rem;

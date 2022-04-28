@@ -20,6 +20,7 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
+import { v4 } from 'uuid'
 
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -53,6 +54,7 @@ const AddProducts = (props) => {
     var ProductName = document.getElementById('productName').value
     var ProductPrice = document.getElementById('productPrice').value
     var ProductReview = document.getElementById('productReview').value
+    var ProductType = document.getElementById('productType').value
 
     const collectionRef = collection(firestore, productCollection)
 
@@ -61,6 +63,8 @@ const AddProducts = (props) => {
     uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
       await getDownloadURL(snapshot.ref).then(async (url) => {
         const payload = {
+          ProductId: v4(),
+          ProductType: ProductType,
           ProductName: ProductName,
           ProductPrice: ProductPrice,
           ProductReview: ProductReview,
@@ -110,6 +114,13 @@ const AddProducts = (props) => {
             placeholder="Price"
             type="number"
           />
+          <input
+            className="input"
+            id="productType"
+            placeholder="Product Type"
+            type="text"
+          />
+
           <textarea
             className="review-text"
             name="review"

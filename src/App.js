@@ -7,6 +7,7 @@ import ShopInfo from './components/ShopInfo'
 // import ContentProduct from './components/ContentProduct'
 import AddProducts from './components/AddProducts'
 import Home from './components/Home'
+import ProductDetail from './components/ProductDetail'
 
 import AddProductTest from './components/AddProductTest'
 
@@ -19,23 +20,10 @@ function App() {
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
           <Route path="/" element={<Home shopTitle="NAMA" />} />
+          <Route path="/products/:productId/*" element={<ProductDetail />} />
 
           <Route path="/4" element={<AddProducts />} />
-          <Route
-            path="/14"
-            element={
-              <AddProductTest
-                shopTitle="NAMA-Nwe Moe Saung"
-                productCollection="Products"
-              />
-            }
-          />
-          <Route
-            path="/24"
-            element={
-              <AddProductTest shopTitle="NAMA-Vape&Pod" productCollection="2" />
-            }
-          />
+
           <Route
             path="/test"
             element={
@@ -55,6 +43,15 @@ function App() {
               />
             }
           />
+          <Route
+            path="/14"
+            element={
+              <AddProductTest
+                shopTitle="NAMA-Nwe Moe Saung"
+                productCollection="Products"
+              />
+            }
+          />
 
           <Route
             path="/2"
@@ -65,6 +62,34 @@ function App() {
                 shopTitle="NAMA-Vape&Pod"
                 productCollection="2"
                 productType={['vape', 'pod', 'ဆက်စပ်ပစ္စည်း']}
+              />
+            }
+          />
+          <Route
+            path="/24"
+            element={
+              <AddProductTest shopTitle="NAMA-Vape&Pod" productCollection="2" />
+            }
+          />
+
+          <Route
+            path="/3"
+            element={
+              <ShopInfo
+                shopImg="./img/shop3.jpg"
+                shopName="Myst Perfume"
+                shopTitle="NAMA-Myst Perfume"
+                productCollection="3"
+                productType={['woman', 'man']}
+              />
+            }
+          />
+          <Route
+            path="/34"
+            element={
+              <AddProductTest
+                shopTitle="NAMA-Myst Perfume"
+                productCollection="3"
               />
             }
           />

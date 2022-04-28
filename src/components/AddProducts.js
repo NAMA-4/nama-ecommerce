@@ -6,6 +6,7 @@ import {
   getDownloadURL,
   deleteObject,
 } from 'firebase/storage'
+
 import ReviewModal from './ReviewModal'
 
 import {
@@ -71,6 +72,7 @@ const AddProducts = () => {
         document.getElementById('productReview').value = ''
       })
     })
+    console.log(products.ProductId)
   }
 
   const handleEdit = async (id) => {

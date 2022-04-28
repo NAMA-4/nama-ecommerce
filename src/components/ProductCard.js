@@ -7,26 +7,43 @@ import { CardActionArea } from '@mui/material'
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
 
+import { Link } from 'react-router-dom'
+
 import ReviewModal from './ReviewModal'
 
 const ProductCard = (props) => {
+  const {
+    productId,
+    productName,
+    productPrice,
+    productReview,
+    productImg,
+  } = props
   return (
     <div>
       <Card sx={{ maxWidth: 400 }}>
         <CardActionArea>
-          <CardMedia
-            className="item-img"
-            component="img"
-            image={props.productImg}
-            alt="green iguana"
-          />
+          <Link
+            to={`/products/${productId}`}
+            // productName={props.productName}
+            productPrice={productPrice}
+            // productReview={props.productReview}
+          >
+            <CardMedia
+              className="item-img"
+              component="img"
+              image={productImg}
+              alt="green iguana"
+            />
+          </Link>
+
           <CardContent className="card-content">
             <Typography
               className="card-text text1"
               gutterBottom
               component="div"
             >
-              {props.productName} | {props.productPrice} MMK
+              {productName} | {productPrice} MMK
             </Typography>
 
             <div className="call-action">
@@ -48,8 +65,8 @@ const ProductCard = (props) => {
               </button>
               <button className="btn btn3">
                 <ReviewModal
-                  productReview={props.productReview}
-                  productName={props.productName}
+                  productReview={productReview}
+                  productName={productName}
                 />
               </button>
             </div>
