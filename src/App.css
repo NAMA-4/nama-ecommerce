@@ -104,7 +104,7 @@
 /* ProductDetail.js */
 .product-detail {
   background-color: rgb(89, 175, 251);
-  height: 100vh;
+  height: 100vh 100%;
 }
 .product-detail .product-img {
   width: 24.5rem;
@@ -250,7 +250,11 @@ input[type='file'] {
 .review-text {
   font-family: 'Noto Sans Myanmar', sans-serif;
 }
-
+.close-review {
+  background-color: rgb(89, 175, 251);
+  position: sticky;
+  bottom: 0;
+}
 /* Swiper.js */
 #app {
   height: 100%;

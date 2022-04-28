@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
+import CloseRoundedIcon from '@mui/icons-material/CloseRounded'
 
 export default function ReviewModal(props) {
   const [open, setOpen] = React.useState(false)
@@ -54,9 +55,9 @@ export default function ReviewModal(props) {
               <p className="review-text">{props.productReview}</p>
             </DialogContentText>
           </DialogContent>
-          <DialogActions>
-            <Button className="text-color" onClick={handleClose}>
-              Close
+          <DialogActions className="close-review">
+            <Button className="text-color " onClick={handleClose}>
+              <CloseRoundedIcon />
             </Button>
             {/* <Button onClick={handleClose}>Subscribe</Button> */}
           </DialogActions>
