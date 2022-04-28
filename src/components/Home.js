@@ -1,6 +1,6 @@
 import React from 'react'
 import Imageslider from './Imageslider'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 // import ContentProduct from './ContentProduct'
 
 const Home = (props) => {
