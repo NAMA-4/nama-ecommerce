@@ -30,11 +30,16 @@ const ProductDetail = () => {
 
   return (
     <>
-      <h1>{product.ProductName}</h1>
-      <h1>{product.ProductPrice}</h1>
-      <h1>{product.ProductId}</h1>
-      <img style={{ width: '30rem' }} src={product.ProductImg} alt="" />
-      <p>{product.ProductReview}</p>
+      <div className="product-detail">
+        <img className="product-img" src={product.ProductImg} alt="" />
+        <div className="product-info">
+          <h4>{product.ProductName}</h4>
+          <h5>{product.ProductPrice}MMK</h5>
+        </div>
+        <div className="product-review">
+          <p>{product.ProductReview}</p>
+        </div>
+      </div>
     </>
   )
 }

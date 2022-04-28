@@ -80,7 +80,7 @@ const ContentProduct = (props) => {
         </Box>
 
         {products.map((product) => (
-          <>
+          <div key={product.index}>
             <ProductCard
               productId={product.ProductId}
               productName={product.ProductName}
@@ -89,7 +89,7 @@ const ContentProduct = (props) => {
               productReview={product.ProductReview}
               productCollection={productCollection}
             />
-          </>
+          </div>
         ))}
       </div>
     )

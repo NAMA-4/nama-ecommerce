@@ -100,6 +100,19 @@
   top: 10%;
   z-index: 50;
 }
+
+/* ProductDetail.js */
+.product-detail .product-img {
+  width: 24.5rem;
+}
+.product-detail .product-info {
+  padding: 1rem;
+  color: rgb(89, 175, 251);
+}
+.product-detail .product-review {
+  padding: 1rem;
+  color: rgb(89, 175, 251);
+}
 /* ShopInfo.js */
 .shop-info {
   position: sticky;
