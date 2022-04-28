@@ -102,16 +102,20 @@
 }
 
 /* ProductDetail.js */
+.product-detail {
+  background-color: rgb(89, 175, 251);
+  height: 100vh;
+}
 .product-detail .product-img {
   width: 24.5rem;
 }
 .product-detail .product-info {
   padding: 1rem;
-  color: rgb(89, 175, 251);
+  color: #fff;
 }
 .product-detail .product-review {
   padding: 1rem;
-  color: rgb(89, 175, 251);
+  color: #fff;
 }
 /* ShopInfo.js */
 .shop-info {
