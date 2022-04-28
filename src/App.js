@@ -20,7 +20,7 @@ function App() {
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
           <Route path="/" element={<Home shopTitle="NAMA" />} />
-          <Route path="/products/:productId/*" element={<ProductDetail />} />
+          <Route path="/products/:productId/" element={<ProductDetail />} />
 
           <Route path="/4" element={<AddProducts />} />
 

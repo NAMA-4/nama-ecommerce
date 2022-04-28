@@ -87,6 +87,7 @@ const ContentProduct = (props) => {
               productPrice={product.ProductPrice}
               productImg={product.ProductImg}
               productReview={product.ProductReview}
+              productCollection={productCollection}
             />
           </>
         ))}

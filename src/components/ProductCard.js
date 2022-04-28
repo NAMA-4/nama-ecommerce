@@ -18,6 +18,7 @@ const ProductCard = (props) => {
     productPrice,
     productReview,
     productImg,
+    productCollection,
   } = props
   return (
     <div>
@@ -25,9 +26,7 @@ const ProductCard = (props) => {
         <CardActionArea>
           <Link
             to={`/products/${productId}`}
-            // productName={props.productName}
-            productPrice={productPrice}
-            // productReview={props.productReview}
+            state={{ from: productCollection }}
           >
             <CardMedia
               className="item-img"
