@@ -37,8 +37,18 @@ export default function FoodShop() {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          <div>Julie မာလာရှမ်းကော</div>
-          <div>ဆိုင်ဖွင့်ချိန် | မနက် ၉ - ည ၈</div>
+          <div
+            className="font-family
+          "
+          >
+            Julie မာလာရှမ်းကော
+          </div>
+          <div
+            className="font-family
+          "
+          >
+            ဆိုင်ဖွင့်ချိန် | မနက် ၉ - ည ၈
+          </div>
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

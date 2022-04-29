@@ -305,6 +305,11 @@ input[type='file'] {
 .food-icon {
   width: 4rem;
 }
+/* FoodShop.js */
+.font-family {
+  font-family: 'Noto Sans Myanmar', sans-serif;
+  color: rgb(235, 162, 68);
+}
 /* Swiper.js */
 #app {
   height: 100%;
