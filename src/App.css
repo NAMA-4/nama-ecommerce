@@ -263,7 +263,9 @@ input[type='file'] {
   gap: 1rem;
   color: rgb(235, 162, 68);
 }
-.cat1 .cat2 .cat3 {
+.cat1,
+.cat2,
+.cat3 {
   display: flex;
   flex-direction: column;
   margin: 1rem;
