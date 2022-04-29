@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImagesliderFood } from './Imageslider'
 import Category from './food/Category'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const Food = () => {
   console.log('HIdosjf')
