@@ -255,6 +255,24 @@ input[type='file'] {
   position: sticky;
   bottom: 0;
 }
+/* foodshop/Category.js */
+.food-category-box {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  gap: 1rem;
+  color: rgb(235, 162, 68);
+}
+.cat1 .cat2 .cat3 {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  text-align: center;
+  align-items: center;
+}
+.food-icon {
+  width: 2rem;
+}
 /* Swiper.js */
 #app {
   height: 100%;

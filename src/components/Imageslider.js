@@ -6,12 +6,12 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 // import './styles.css'
-import data from './ImageSlide.json'
+import { foodslide, mainslide } from './ImageSlide'
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper'
 
-export default function Imageslider() {
+function ImagesliderMain() {
   return (
     <>
       <Swiper
@@ -28,7 +28,7 @@ export default function Imageslider() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-        {data.map((val) => (
+        {mainslide.map((val) => (
           <SwiperSlide>
             <img src={val.img} alt="" />
           </SwiperSlide>
@@ -37,3 +37,31 @@ export default function Imageslider() {
     </>
   )
 }
+
+function ImagesliderFood() {
+  return (
+    <>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {foodslide.map((val) => (
+          <SwiperSlide>
+            <img src={val.img} alt="" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
+  )
+}
+export { ImagesliderMain, ImagesliderFood }

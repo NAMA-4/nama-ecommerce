@@ -1,5 +1,5 @@
 import React from 'react'
-import Imageslider from './Imageslider'
+import { ImagesliderMain } from './Imageslider'
 import { Link } from 'react-router-dom'
 // import ContentProduct from './ContentProduct'
 
@@ -7,7 +7,7 @@ const Home = (props) => {
   document.title = props.shopTitle
   return (
     <div>
-      <Imageslider />
+      <ImagesliderMain />
       <FoodProductCategory />
       <RecentlyAdded />
       <EditorChoice />
@@ -21,7 +21,7 @@ const FoodProductCategory = () => {
   return (
     <>
       <div className="food-product-box">
-        <Link className="link" to="/1">
+        <Link className="link" to="/nama-food">
           <div className="food">
             <img className="food-img" src="./img/food-logo.png" alt="" />
             <span> အစားအသောက်</span>

@@ -10,6 +10,7 @@ import Home from './components/Home'
 import ProductDetail from './components/ProductDetail'
 
 import AddProductTest from './components/AddProductTest'
+import FoodShop from './components/FoodShop'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         {/* <Imageslider /> */}
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
+          <Route path="/nama-food" element={<FoodShop />} />
           <Route path="/" element={<Home shopTitle="NAMA" />} />
           <Route path="/products/:productId/" element={<ProductDetail />} />
 
@@ -39,7 +41,7 @@ function App() {
                 shopName="Nwe Moe Saung Korean Cosmetics Paradise"
                 shopTitle="NAMA-Nwe Moe Saung"
                 productCollection="Products"
-                productType={['SkinCare', 'Tonner', 'Lipstick']}
+                // productType={[]}
               />
             }
           />
