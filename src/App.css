@@ -255,7 +255,37 @@ input[type='file'] {
   position: sticky;
   bottom: 0;
 }
-/* foodshop/Category.js */
+/* foodshop.js/Category.js */
+.food-shop-box {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  overflow-x: auto;
+}
+.food-shop-box .shop-card .shopimg {
+  width: 15rem;
+  border-radius: 10px;
+}
+.food-shop-box .shop-card {
+  display: flex;
+  flex-direction: column;
+}
+.to-more {
+  background-color: rgb(235, 171, 32);
+  width: 400px;
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.more-text {
+  width: 200px;
+  position: relative;
+  font-size: 1rem;
+}
 .food-category-box {
   display: flex;
   padding: 1rem;

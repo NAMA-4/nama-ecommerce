@@ -11,6 +11,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox'
 import MailIcon from '@mui/icons-material/Mail'
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded'
+import logo from '../img/NaMa.png'
 
 const Navbar = () => {
   return (
@@ -19,7 +20,7 @@ const Navbar = () => {
         <TemporaryDrawer />
       </div>
       <div className="center-logo">
-        <img className="logo-img" src="./img/NaMa.png" alt="logo" />
+        <img className="logo-img" src={logo} alt="logo" />
         <h3 className="logo-text">Online Market</h3>
       </div>
       <div className="rightside">

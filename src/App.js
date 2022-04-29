@@ -10,7 +10,8 @@ import Home from './components/Home'
 import ProductDetail from './components/ProductDetail'
 
 import AddProductTest from './components/AddProductTest'
-import FoodShop from './components/FoodShop'
+import Food from './components/Food'
+import FoodShop from './components/food/FoodShop'
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         {/* <Imageslider /> */}
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
-          <Route path="/nama-food" element={<FoodShop />} />
+          <Route path="/nama-food/*" element={<Food />} />
+          <Route path="/nama-food/shop/*" element={<FoodShop />} />
           <Route path="/" element={<Home shopTitle="NAMA" />} />
           <Route path="/products/:productId/" element={<ProductDetail />} />
 

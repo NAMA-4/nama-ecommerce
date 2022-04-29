@@ -1,16 +1,56 @@
 import React from 'react'
 import { ImagesliderFood } from './Imageslider'
-import Category from './foodshop/Category'
+import Category from './food/Category'
+import { Link, useNavigate } from 'react-router-dom'
 
-const FoodShop = () => {
+const Food = () => {
   console.log('HIdosjf')
   return (
     <div>
       <ImagesliderFood />
       <Category />
+      <FoodShopBox />
       <RecentlyAdded />
       <EditorChoice />
     </div>
+  )
+}
+
+const FoodShopBox = () => {
+  const navigate = useNavigate()
+  return (
+    <>
+      <h3 className="category-label">အစားအသောက်ဆိုင်များ</h3>
+
+      <div className="food-shop-box">
+        <div className="shop-card">
+          <img className="shopimg" src="./img/shop.jpg" alt="" />
+          <span className="shopname">Shop Name</span>
+        </div>
+        <div className="shop-card">
+          <img className="shopimg" src="./img/shop.jpg" alt="" />
+          <span className="shopname">Shop Name</span>
+        </div>
+        <div className="shop-card">
+          <img className="shopimg" src="./img/shop.jpg" alt="" />
+          <span className="shopname">Shop Name</span>
+        </div>
+        <div className="shop-card">
+          <img className="shopimg" src="./img/shop.jpg" alt="" />
+          <span className="shopname">Shop Name</span>
+        </div>
+        <div className="shop-card">
+          <img className="shopimg" src="./img/shop.jpg" alt="" />
+          <span className="shopname">Shop Name</span>
+        </div>
+        <div
+          lassName="to-more link"
+          onClick={() => navigate('/nama-food/shop')}
+        >
+          <div className="more-text">ဆိုင်များသို့>>></div>
+        </div>
+      </div>
+    </>
   )
 }
 
@@ -52,7 +92,7 @@ const RecentlyAdded = () => {
 const EditorChoice = () => {
   return (
     <>
-      <h3 className="category-label">EditorChoice</h3>
+      <h3 className="category-label">Editor's Choice</h3>
       <div className="recently-added-box">
         <div className="card-box">
           <img src="./img/9 (1).jpg" alt="" />
@@ -84,4 +124,4 @@ const EditorChoice = () => {
   )
 }
 
-export default FoodShop
+export default Food

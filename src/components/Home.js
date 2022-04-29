@@ -75,7 +75,7 @@ const RecentlyAdded = () => {
 const EditorChoice = () => {
   return (
     <>
-      <h3 className="category-label">EditorChoice</h3>
+      <h3 className="category-label">Editor's Choice</h3>
       <div className="recently-added-box">
         <div className="card-box">
           <img src="./img/1 (3).png" alt="" />
