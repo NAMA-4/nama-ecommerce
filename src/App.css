@@ -260,17 +260,17 @@ input[type='file'] {
   display: flex;
   padding: 1rem;
   justify-content: center;
-  gap: 1rem;
-  color: rgb(235, 162, 68);
+  gap: 3rem;
 }
 .cat1,
 .cat2,
 .cat3 {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
   text-align: center;
   align-items: center;
+  justify-content: center;
+  color: rgb(235, 162, 68);
 }
 .food-icon {
   width: 4rem;
