@@ -1,7 +1,7 @@
 import React from 'react'
 import { ImagesliderFood } from './Imageslider'
 import Category from './food/Category'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Food = () => {
   console.log('HIdosjf')
@@ -17,7 +17,6 @@ const Food = () => {
 }
 
 const FoodShopBox = () => {
-  const navigate = useNavigate()
   return (
     <>
       <h3 className="category-label">အစားအသောက်ဆိုင်များ</h3>
@@ -43,12 +42,9 @@ const FoodShopBox = () => {
           <img className="shopimg" src="./img/shop.jpg" alt="" />
           <span className="shopname">Shop Name</span>
         </div>
-        <div
-          lassName="to-more link"
-          onClick={() => navigate('/nama-food/shop')}
-        >
+        <Link className="to-more link" to="/nama-food/shop">
           <div className="more-text">ဆိုင်များသို့>>></div>
-        </div>
+        </Link>
       </div>
     </>
   )
