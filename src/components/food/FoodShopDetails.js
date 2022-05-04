@@ -91,7 +91,7 @@ const FoodShopDetails = () => {
     <>
       <div>
         <input type="text" id="menuName" placeholder="Menu name" />
-        <input type="text" id="menuPrice" placeholder="Menu Price" />
+        <input type="number" id="menuPrice" placeholder="Menu Price" />
         <input type="text" id="menuType" placeholder="Menu Type" />
         <label className="fileUpload">
           <ImageIcon fontSize="large" />
