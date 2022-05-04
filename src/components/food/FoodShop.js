@@ -4,13 +4,13 @@ import { firestore } from '../../config/firebase'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { Link } from 'react-router-dom'
 
-import { styled } from '@mui/material/styles'
+// import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
-import Collapse from '@mui/material/Collapse'
-import IconButton from '@mui/material/IconButton'
+// import Collapse from '@mui/material/Collapse'
+// import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 
 // const ExpandMore = styled((props) => {
@@ -37,7 +37,7 @@ export default function FoodShopp() {
     })
   }, [])
 
-  const [expanded, setExpanded] = React.useState(false)
+  // const [expanded, setExpanded] = React.useState(false)
 
   // const handleExpandClick = () => {
   //   setExpanded(!expanded)
@@ -82,7 +82,7 @@ export default function FoodShopp() {
                 <span className="font-family">ဝင်ကြည့်မယ်</span>
               </ExpandMore> */}
             </CardActions>
-            <Collapse in={expanded} timeout="auto" unmountOnExit>
+            {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
                 <Typography paragraph>Method:</Typography>
                 <Typography paragraph>
@@ -114,7 +114,7 @@ export default function FoodShopp() {
                   serve.
                 </Typography>
               </CardContent>
-            </Collapse>
+            </Collapse> */}
           </>
         ))}
       </Card>
