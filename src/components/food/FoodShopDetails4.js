@@ -6,7 +6,7 @@ import {
   onSnapshot,
   collection,
   where,
-  // getDoc,
+  // updateDoc,
   getDocs,
   setDoc,
   doc,
@@ -20,6 +20,8 @@ import { v4 } from 'uuid'
 
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
+// import EditIcon from '@mui/icons-material/Edit'
+// import DeleteIcon from '@mui/icons-material/Delete'
 
 const FoodShopDetails4 = () => {
   const { shopId } = useParams()
@@ -105,6 +107,15 @@ const FoodShopDetails4 = () => {
     }
   }
 
+  // const handleEdit = async (id) => {
+  //   const docRef = doc(firestore, 'Food', id)
+  //   const menuName = prompt('Edit menu name')
+  //   const menuPrice = prompt('Edit menu price')
+
+  //   const payload = { menuName, menuPrice }
+  //   updateDoc(docRef, payload)
+  // }
+
   return (
     <>
       <div className="addmenu-box">
@@ -156,60 +167,33 @@ const FoodShopDetails4 = () => {
         {shopMenus.map((menu) => (
           <>
             <div className="menu-box">
-              {shop.shopImg == null ? (
-                <>
-                  <div className="col1">
-                    <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
-                  </div>
-                  <div className="col2">
-                    <h2>{menu.menuName}</h2>
-                    <h3>{menu.menuPrice}MMK</h3>
-                  </div>
-                  <div className="col3">
-                    <button className="btn btn1">
-                      <a
-                        href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
-                        class="btn btn-primary action"
-                      >
-                        <LocalGroceryStoreRoundedIcon
-                          fontSize="small"
-                          className="icon"
-                        />
-                      </a>
-                    </button>
-                    <button className="btn btn2">
-                      <a href="tel:09455406870" class="btn btn-primary action">
-                        <PhoneRoundedIcon fontSize="small" />
-                      </a>
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="col2">
-                    <h2>{menu.menuName}</h2>
-                    <h3>{menu.menuPrice}MMK</h3>
-                  </div>
-                  <div className="col3">
-                    <button className="btn btn1">
-                      <a
-                        href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
-                        class="btn btn-primary action"
-                      >
-                        <LocalGroceryStoreRoundedIcon
-                          fontSize="small"
-                          className="icon"
-                        />
-                      </a>
-                    </button>
-                    <button className="btn btn2">
-                      <a href="tel:09455406870" class="btn btn-primary action">
-                        <PhoneRoundedIcon fontSize="small" />
-                      </a>
-                    </button>
-                  </div>
-                </>
+              {menu.menuImg == null ? null : (
+                <div className="col1">
+                  <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
+                </div>
               )}
+              <div className="col2">
+                <h2>{menu.menuName}</h2>
+                <h3>{menu.menuPrice} MMK</h3>
+              </div>
+              <div className="col3">
+                <button className="btn btn1">
+                  <a
+                    href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
+                    class="btn btn-primary action"
+                  >
+                    <LocalGroceryStoreRoundedIcon
+                      fontSize="small"
+                      className="icon"
+                    />
+                  </a>
+                </button>
+                <button className="btn btn2">
+                  <a href="tel:09455406870" class="btn btn-primary action">
+                    <PhoneRoundedIcon fontSize="small" />
+                  </a>
+                </button>
+              </div>
             </div>
           </>
         ))}

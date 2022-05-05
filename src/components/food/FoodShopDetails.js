@@ -47,36 +47,33 @@ const FoodShopDetails = () => {
         {shopMenus.map((menu) => (
           <>
             <div className="menu-box">
-              {shop.shopImg == null ? (
+              {menu.menuImg == null ? null : (
                 <div className="col1">
                   <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
                 </div>
-              ) : (
-                <>
-                  <div className="col2">
-                    <h2>{menu.menuName}</h2>
-                    <h3>{menu.menuPrice} MMK</h3>
-                  </div>
-                  <div className="col3">
-                    <button className="btn btn1">
-                      <a
-                        href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
-                        class="btn btn-primary action"
-                      >
-                        <LocalGroceryStoreRoundedIcon
-                          fontSize="small"
-                          className="icon"
-                        />
-                      </a>
-                    </button>
-                    <button className="btn btn2">
-                      <a href="tel:09455406870" class="btn btn-primary action">
-                        <PhoneRoundedIcon fontSize="small" />
-                      </a>
-                    </button>
-                  </div>
-                </>
               )}
+              <div className="col2">
+                <h2>{menu.menuName}</h2>
+                <h3>{menu.menuPrice} MMK</h3>
+              </div>
+              <div className="col3">
+                <button className="btn btn1">
+                  <a
+                    href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
+                    class="btn btn-primary action"
+                  >
+                    <LocalGroceryStoreRoundedIcon
+                      fontSize="small"
+                      className="icon"
+                    />
+                  </a>
+                </button>
+                <button className="btn btn2">
+                  <a href="tel:09455406870" class="btn btn-primary action">
+                    <PhoneRoundedIcon fontSize="small" />
+                  </a>
+                </button>
+              </div>
             </div>
           </>
         ))}
