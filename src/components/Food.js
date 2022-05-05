@@ -49,8 +49,6 @@ const FoodShopBox = () => {
           <div className="more-text">ဆိုင်များသို့>>></div>
         </Link>
       </div>
-
-      
     </>
   )
 }
