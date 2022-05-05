@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ImagesliderFood } from './Imageslider'
 import Category from './food/Category'
 import { Link } from 'react-router-dom'
+import { firestore } from '../config/firebase'
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 
 const Food = () => {
   console.log('HIdosjf')
@@ -17,35 +19,38 @@ const Food = () => {
 }
 
 const FoodShopBox = () => {
+  const [shops, setShops] = useState([
+    { shopName: 'Loading...', shopId: 'Initial' },
+  ])
+
+  useEffect(() => {
+    const collectionRef = collection(firestore, 'Food')
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    onSnapshot(q, (snapshot) => {
+      setShops(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    })
+  }, [])
+
   return (
     <>
       <h3 className="category-label">အစားအသောက်ဆိုင်များ</h3>
-
       <div className="food-shop-box">
-        <div className="shop-card">
-          <img className="shopimg" src="./img/shop.jpg" alt="" />
-          <span className="shopname">Shop Name</span>
-        </div>
-        <div className="shop-card">
-          <img className="shopimg" src="./img/shop.jpg" alt="" />
-          <span className="shopname">Shop Name</span>
-        </div>
-        <div className="shop-card">
-          <img className="shopimg" src="./img/shop.jpg" alt="" />
-          <span className="shopname">Shop Name</span>
-        </div>
-        <div className="shop-card">
-          <img className="shopimg" src="./img/shop.jpg" alt="" />
-          <span className="shopname">Shop Name</span>
-        </div>
-        <div className="shop-card">
-          <img className="shopimg" src="./img/shop.jpg" alt="" />
-          <span className="shopname">Shop Name</span>
-        </div>
+        {shops.slice(0, 4).map((shop) => (
+          <div>
+            <div className="shop-card">
+              <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
+                <img className="shopimg" src={shop.shopImg} alt="" />
+              </Link>
+              <span className="shopname">{shop.shopName}</span>
+            </div>
+          </div>
+        ))}
         <Link className="to-more link" to="/nama-food/shop">
           <div className="more-text">ဆိုင်များသို့>>></div>
         </Link>
       </div>
+
+      
     </>
   )
 }

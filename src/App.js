@@ -13,7 +13,7 @@ import AddProductTest from './components/AddProductTest'
 import Food from './components/Food'
 import FoodShop from './components/food/FoodShop'
 import AddFood from './components/food/AddFood'
-import FoodShopDetails from './components/food/FoodShopDetails'
+import FoodShopDetails from './components/food/FoodShopDetails4'
 
 function App() {
   return (
