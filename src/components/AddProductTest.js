@@ -166,10 +166,7 @@ const AddProducts = (props) => {
                 >
                   {product.ProductName} | {product.ProductPrice} MMK
                 </Typography>
-                {/* <Typography className="card-text " variant="body2">
-                Lizards are a widespread group of squamate reptiles, with over
-                6,000 species, ranging across all continents except Antarctica
-              </Typography> */}
+
                 <div className="call-action">
                   <button
                     className="btn btn1"
