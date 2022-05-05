@@ -116,7 +116,7 @@ const FoodShopDetails4 = () => {
         />
         <input
           className="input"
-          type="number"
+          type="text"
           id="menuPrice"
           placeholder="Menu Price"
         />
