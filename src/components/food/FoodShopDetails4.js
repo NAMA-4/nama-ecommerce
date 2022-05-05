@@ -6,7 +6,7 @@ import {
   onSnapshot,
   collection,
   where,
-  // updateDoc,
+  updateDoc,
   getDocs,
   setDoc,
   doc,
@@ -18,10 +18,8 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
 import ImageIcon from '@mui/icons-material/Image'
 import { v4 } from 'uuid'
 
-import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
-import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
-// import EditIcon from '@mui/icons-material/Edit'
-// import DeleteIcon from '@mui/icons-material/Delete'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const FoodShopDetails4 = () => {
   const { shopId } = useParams()
@@ -107,14 +105,14 @@ const FoodShopDetails4 = () => {
     }
   }
 
-  // const handleEdit = async (id) => {
-  //   const docRef = doc(firestore, 'Food', id)
-  //   const menuName = prompt('Edit menu name')
-  //   const menuPrice = prompt('Edit menu price')
+  const handleEdit = async (id, menu) => {
+    const docRef = doc(firestore, 'Food', `${shop.shopName}`, 'shopMenus', menu)
+    const menuName = prompt('Edit menu name')
+    const menuPrice = prompt('Edit menu price')
 
-  //   const payload = { menuName, menuPrice }
-  //   updateDoc(docRef, payload)
-  // }
+    const payload = { menuName, menuPrice }
+    await updateDoc(docRef, payload)
+  }
 
   return (
     <>
@@ -176,7 +174,7 @@ const FoodShopDetails4 = () => {
                 <h2>{menu.menuName}</h2>
                 <h3>{menu.menuPrice} MMK</h3>
               </div>
-              <div className="col3">
+              {/* <div className="col3">
                 <button className="btn btn1">
                   <a
                     href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
@@ -192,6 +190,20 @@ const FoodShopDetails4 = () => {
                   <a href="tel:09455406870" class="btn btn-primary action">
                     <PhoneRoundedIcon fontSize="small" />
                   </a>
+                </button>
+              </div> */}
+              <div className="call-action col3">
+                <button
+                  className="btn btn1"
+                  // onClick={() => handleDelete(menu.menuId, menu.menuImg)}
+                >
+                  <DeleteIcon fontSize="small" />
+                </button>
+                <button
+                  className="btn btn2"
+                  onClick={() => handleEdit(menu.menuId, menu.menuName)}
+                >
+                  <EditIcon fontSize="small" className="icon" />
                 </button>
               </div>
             </div>
