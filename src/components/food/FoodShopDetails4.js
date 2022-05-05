@@ -98,6 +98,7 @@ const FoodShopDetails = () => {
           })
           document.getElementById('menuName').value = ''
           document.getElementById('menuPrice').value = ''
+          setImageUpload([])
           // document.getElementById('menuType').value = ''
         })
       })
@@ -131,7 +132,6 @@ const FoodShopDetails = () => {
             type="file"
             placeholder="select file"
             id="menuImg"
-            ref={ref}
             onChange={(event) => {
               setImageUpload(event.target.files[0])
             }}
