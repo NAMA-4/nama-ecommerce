@@ -13,7 +13,8 @@ import AddProductTest from './components/AddProductTest'
 import Food from './components/Food'
 import FoodShop from './components/food/FoodShop'
 import AddFood from './components/food/AddFood'
-import FoodShopDetails from './components/food/FoodShopDetails4'
+import FoodShopDetails4 from './components/food/FoodShopDetails4'
+import FoodShopDetails from './components/food/FoodShopDetails'
 
 function App() {
   return (
@@ -23,12 +24,19 @@ function App() {
         {/* <Imageslider /> */}
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
-          <Route path="/nama-food/addfood" element={<AddFood />} />
           <Route path="/nama-food/*" element={<Food />} />
           <Route path="/nama-food/shop/*" element={<FoodShop />} />
+          {/* 4 */}
+          <Route path="/nama-food/shop/4" element={<AddFood />} />
+
           <Route
             path="/nama-food/shop/:shopId/*"
             element={<FoodShopDetails />}
+          />
+          {/* 4 */}
+          <Route
+            path="/nama-food/shop/:shopId/4"
+            element={<FoodShopDetails4 />}
           />
           <Route path="/" element={<Home shopTitle="NAMA" />} />
           <Route path="/products/:productId/" element={<ProductDetail />} />

@@ -21,7 +21,7 @@ import { v4 } from 'uuid'
 import PhoneRoundedIcon from '@mui/icons-material/PhoneRounded'
 import LocalGroceryStoreRoundedIcon from '@mui/icons-material/LocalGroceryStoreRounded'
 
-const FoodShopDetails = () => {
+const FoodShopDetails4 = () => {
   const { shopId } = useParams()
   const [shop, setShop] = useState([])
   const [shopMenus, setShopMenus] = useState([])
@@ -189,4 +189,4 @@ const FoodShopDetails = () => {
   )
 }
 
-export default FoodShopDetails
+export default FoodShopDetails4
