@@ -348,6 +348,7 @@ input[type='file'] {
 }
 .col2 {
   color: #fff;
+  font-size: 0.6rem;
 }
 .col3 {
   display: flex;

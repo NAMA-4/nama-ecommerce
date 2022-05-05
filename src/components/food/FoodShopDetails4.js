@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { firestore, storage } from '../../config/firebase'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import {
   onSnapshot,
   collection,
@@ -26,7 +26,6 @@ const FoodShopDetails = () => {
   const [shop, setShop] = useState([])
   const [shopMenus, setShopMenus] = useState([])
   const [imageUpload, setImageUpload] = useState(null)
-  const reff = useRef()
 
   window.scrollTo(0, 0)
   useEffect(() => {
@@ -67,28 +66,42 @@ const FoodShopDetails = () => {
       id: detail.id,
     }))
     // console.log(queryData)
-    if (imageUpload == null) return
-    const imageRef = ref(storage, `Food/${imageUpload.name}`)
-    uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
-      await getDownloadURL(snapshot.ref).then(async (url) => {
-        const payload = {
-          menuId: v4(),
-          menuName: menuName,
-          menuPrice: menuPrice,
-          // menuType: menuType,
-          menuImg: url,
-          timestamp: serverTimestamp(),
-        }
-        queryData.map(async (v) => {
-          const docRef = doc(firestore, `Food/${v.id}/shopMenus`, menuName)
-          await setDoc(docRef, payload)
-        })
-        document.getElementById('menuName').value = ''
-        document.getElementById('menuPrice').value = ''
-        // document.getElementById('menuType').value = ''
-        reff.current.value = ''
+    if (imageUpload == null) {
+      const payload = {
+        menuId: v4(),
+        menuName: menuName,
+        menuPrice: menuPrice,
+        // menuImg: url,
+        timestamp: serverTimestamp(),
+      }
+      queryData.map(async (v) => {
+        const docRef = doc(firestore, `Food/${v.id}/shopMenus`, menuName)
+        await setDoc(docRef, payload)
       })
-    })
+      document.getElementById('menuName').value = ''
+      document.getElementById('menuPrice').value = ''
+    } else {
+      const imageRef = ref(storage, `Food/${imageUpload.name}`)
+      uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
+        await getDownloadURL(snapshot.ref).then(async (url) => {
+          const payload = {
+            menuId: v4(),
+            menuName: menuName,
+            menuPrice: menuPrice,
+            // menuType: menuType,
+            menuImg: url,
+            timestamp: serverTimestamp(),
+          }
+          queryData.map(async (v) => {
+            const docRef = doc(firestore, `Food/${v.id}/shopMenus`, menuName)
+            await setDoc(docRef, payload)
+          })
+          document.getElementById('menuName').value = ''
+          document.getElementById('menuPrice').value = ''
+          // document.getElementById('menuType').value = ''
+        })
+      })
+    }
   }
 
   return (
