@@ -13,8 +13,14 @@ import {
   serverTimestamp,
   query,
   orderBy,
+  deleteDoc,
 } from 'firebase/firestore'
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from 'firebase/storage'
 import ImageIcon from '@mui/icons-material/Image'
 import { v4 } from 'uuid'
 
@@ -27,7 +33,7 @@ const FoodShopDetails4 = () => {
   const [shopMenus, setShopMenus] = useState([])
   const [imageUpload, setImageUpload] = useState(null)
 
-  window.scrollTo(0, 0)
+  // window.scrollTo(0, 0)
   useEffect(() => {
     const collectionRef = collection(firestore, 'Food')
 
@@ -52,7 +58,6 @@ const FoodShopDetails4 = () => {
   const addShopMenu = async () => {
     var menuName = document.getElementById('menuName').value
     var menuPrice = document.getElementById('menuPrice').value
-    // var menuType = document.getElementById('menuType').value
 
     console.log(shopId)
 
@@ -65,7 +70,6 @@ const FoodShopDetails4 = () => {
       ...detail.data(),
       id: detail.id,
     }))
-    // console.log(queryData)
     if (imageUpload == null) {
       const payload = {
         menuId: v4(),
@@ -88,7 +92,6 @@ const FoodShopDetails4 = () => {
             menuId: v4(),
             menuName: menuName,
             menuPrice: menuPrice,
-            // menuType: menuType,
             menuImg: url,
             timestamp: serverTimestamp(),
           }
@@ -99,19 +102,23 @@ const FoodShopDetails4 = () => {
           document.getElementById('menuName').value = ''
           document.getElementById('menuPrice').value = ''
           setImageUpload([])
-          // document.getElementById('menuType').value = ''
         })
       })
     }
   }
 
-  const handleEdit = async (id, menu) => {
-    const docRef = doc(firestore, 'Food', `${shop.shopName}`, 'shopMenus', menu)
-    const menuName = prompt('Edit menu name')
-    const menuPrice = prompt('Edit menu price')
+  const handleEdit = async (id, editMenuName, editMenuPrice) => {
+    const docRef = doc(firestore, `Food/${shop.shopName}/shopMenus`, id)
 
-    const payload = { menuName, menuPrice }
+    const payload = { menuName: editMenuName, menuPrice: editMenuPrice }
     await updateDoc(docRef, payload)
+  }
+
+  const handleDelete = async (id, img) => {
+    const docRef = doc(firestore, `Food/${shop.shopName}/shopMenus`, id)
+    const imgRef = ref(storage, img)
+    await deleteDoc(docRef)
+    await deleteObject(imgRef)
   }
 
   return (
@@ -164,7 +171,7 @@ const FoodShopDetails4 = () => {
       <div className="shopMenus">
         {shopMenus.map((menu) => (
           <>
-            <div className="menu-box">
+            <div className="menu-box" key={menu.id}>
               {menu.menuImg == null ? null : (
                 <div className="col1">
                   <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
@@ -174,36 +181,22 @@ const FoodShopDetails4 = () => {
                 <h2>{menu.menuName}</h2>
                 <h3>{menu.menuPrice} MMK</h3>
               </div>
-              {/* <div className="col3">
-                <button className="btn btn1">
-                  <a
-                    href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
-                    class="btn btn-primary action"
-                  >
-                    <LocalGroceryStoreRoundedIcon
-                      fontSize="small"
-                      className="icon"
-                    />
-                  </a>
-                </button>
-                <button className="btn btn2">
-                  <a href="tel:09455406870" class="btn btn-primary action">
-                    <PhoneRoundedIcon fontSize="small" />
-                  </a>
-                </button>
-              </div> */}
+
               <div className="call-action col3">
                 <button
                   className="btn btn1"
-                  // onClick={() => handleDelete(menu.menuId, menu.menuImg)}
+                  onClick={() => handleDelete(menu.id, menu.menuImg)}
                 >
                   <DeleteIcon fontSize="small" />
                 </button>
-                <button
-                  className="btn btn2"
-                  onClick={() => handleEdit(menu.menuId, menu.menuName)}
-                >
-                  <EditIcon fontSize="small" className="icon" />
+
+                <button className="btn btn1" id={menu.id}>
+                  <EditModal
+                    menu={menu}
+                    menuName={menu.menuName}
+                    menuPrice={menu.menuPrice}
+                    handleEdit={handleEdit}
+                  />
                 </button>
               </div>
             </div>
@@ -215,3 +208,46 @@ const FoodShopDetails4 = () => {
 }
 
 export default FoodShopDetails4
+
+const EditModal = (props) => {
+  const [openModal, setOpenModal] = useState(false)
+  const [editMenuName, setEditMenuName] = useState('')
+  const [editMenuPrice, setEditMenuPrice] = useState('')
+  const { menuName, menuPrice, handleEdit, menu } = props
+
+  return (
+    <>
+      <EditIcon onClick={() => setOpenModal(!openModal)}>Edit</EditIcon>
+      {openModal && (
+        <div className="modal-box">
+          <input
+            type="text"
+            defaultValue={menuName}
+            onChange={(e) => setEditMenuName(e.target.value)}
+          />
+          <input
+            type="text"
+            defaultValue={menuPrice}
+            onChange={(e) => setEditMenuPrice(e.target.value)}
+          />
+          <button
+            className="edit"
+            onClick={() => {
+              handleEdit(menu.id, editMenuName, editMenuPrice)
+            }}
+          >
+            Edit
+          </button>
+          <button
+            className="close"
+            onClick={() => {
+              setOpenModal(false)
+            }}
+          >
+            Close
+          </button>
+        </div>
+      )}
+    </>
+  )
+}

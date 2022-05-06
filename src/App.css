@@ -355,6 +355,39 @@ input[type='file'] {
   flex-direction: column;
   gap: 1rem;
 }
+.modal-box {
+  color: #eee;
+  background-color: rgb(230, 149, 51);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 5rem;
+  box-shadow: 0 10px 10px 0;
+  border-radius: 10px;
+  gap: 1rem;
+}
+.modal-box input {
+  padding: 0.5rem;
+  border-style: none;
+  border-radius: 5px;
+}
+.modal-box .edit {
+  padding: 0.25rem 0.5rem;
+  border-style: none;
+  border-radius: 5px;
+}
+.modal-box .close {
+  padding: 0.25rem 0.5rem;
+  border-style: none;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 1rem;
+}
 
 /* Swiper.js */
 #app {
