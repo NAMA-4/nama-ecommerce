@@ -101,7 +101,7 @@ const FoodShopDetails4 = () => {
           })
           document.getElementById('menuName').value = ''
           document.getElementById('menuPrice').value = ''
-          setImageUpload([])
+          setImageUpload('')
         })
       })
     }
@@ -172,9 +172,11 @@ const FoodShopDetails4 = () => {
         {shopMenus.map((menu) => (
           <>
             <div className="menu-box" key={menu.id}>
-              {menu.menuImg == null ? null : (
+              {menu.menuImg === '' ? null : (
                 <div className="col1">
-                  <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
+                  <a href={menu.menuImg}>
+                    <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
+                  </a>
                 </div>
               )}
               <div className="col2">
