@@ -49,7 +49,9 @@ const FoodShopDetails = () => {
             <div className="menu-box">
               {menu.menuImg == null ? null : (
                 <div className="col1">
-                  <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
+                  <a href={menu.menuImg}>
+                    <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
+                  </a>
                 </div>
               )}
               <div className="col2">

@@ -172,7 +172,7 @@ const FoodShopDetails4 = () => {
         {shopMenus.map((menu) => (
           <>
             <div className="menu-box" key={menu.id}>
-              {menu.menuImg === '' ? null : (
+              {menu.menuImg == null ? null : (
                 <div className="col1">
                   <a href={menu.menuImg}>
                     <img style={{ width: '5rem' }} src={menu.menuImg} alt="" />
