@@ -234,6 +234,7 @@ const EditModal = (props) => {
             className="edit"
             onClick={() => {
               handleEdit(menu.id, editMenuName, editMenuPrice)
+              setOpenModal(!openModal)
             }}
           >
             Edit
