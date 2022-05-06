@@ -49,7 +49,7 @@ const EditorChoice = () => {
         {shops.slice(0, 4).map((shop) => (
           <div>
             <div className="shop-card">
-              <Link to={`/nama-food/shop/${shop.shopId}`}>
+              <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
                 <img className="shopimg" src={shop.shopImg} alt="" />
               </Link>
               <span className="shopname">{shop.shopName}</span>
@@ -82,7 +82,7 @@ const FoodShop = () => {
       <div className="recently-added-box">
         {shops.map((shop) => (
           <div className="card-box">
-            <Link to={`/nama-food/shop/${shop.shopId}`}>
+            <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
               <img src={shop.shopImg} alt="" />
             </Link>
 
