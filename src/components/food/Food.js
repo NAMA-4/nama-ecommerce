@@ -34,7 +34,7 @@ const EditorChoice = () => {
     const collectionRef = collection(firestore, 'Food')
     const q = query(
       collectionRef,
-      orderBy('timestamp', 'desc'),
+      // orderBy('timestamp', 'desc'),
       where('shopState', '==', 'A'),
     )
     onSnapshot(q, (snapshot) => {
