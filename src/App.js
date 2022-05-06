@@ -10,7 +10,8 @@ import Home from './components/Home'
 import ProductDetail from './components/ProductDetail'
 
 import AddProductTest from './components/AddProductTest'
-import Food from './components/Food'
+import Food from './components/food/Food'
+import Food4 from './components/food/Food4'
 import FoodShop from './components/food/FoodShop'
 import AddFood from './components/food/AddFood'
 import FoodShopDetails4 from './components/food/FoodShopDetails4'
@@ -25,6 +26,9 @@ function App() {
         {/* <ScrollableTabsButtonForce className="category" /> */}
         <Routes>
           <Route path="/nama-food" element={<Food />} />
+          {/* 4 */}
+          <Route path="/nama-food/4" element={<Food4 />} />
+
           <Route path="/nama-food/shop" element={<FoodShop />} />
           {/* 4 */}
           <Route path="/nama-food/shop/4" element={<AddFood />} />

@@ -64,17 +64,18 @@
   width: 3rem;
 }
 .category-label {
-  color: rgb(89, 175, 251);
+  color: rgb(251, 186, 89);
   margin: 1rem 0 0.5rem 1rem;
 }
 .recently-added-box {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: auto auto;
   overflow-x: auto;
-  color: rgb(89, 175, 251);
+  color: rgb(251, 186, 89);
 }
 .recently-added-box .card-box img {
-  width: 14rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 15px;
 }
 .recently-added-box .card-box {
@@ -271,6 +272,8 @@ input[type='file'] {
 }
 .food-shop-box .shop-card .shopimg {
   width: 15rem;
+  height: 15rem;
+  position: cover;
   border-radius: 10px;
 }
 .food-shop-box .shop-card {
