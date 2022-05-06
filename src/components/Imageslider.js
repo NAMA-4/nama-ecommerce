@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 
 // import './styles.css'
-import { foodslide, mainslide } from './ImageSlide'
+import { mainslide } from './ImageSlide'
 import { firestore } from '../config/firebase'
 import { collection, orderBy, onSnapshot, query } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
