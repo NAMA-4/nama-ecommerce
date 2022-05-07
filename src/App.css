@@ -245,6 +245,18 @@ input[type='file'] {
   color: rgb(89, 175, 251);
   font-family: 'Noto Sans Myanmar', sans-serif;
 }
+/* Food4.js */
+.food4-delete-btn {
+  position: relative;
+  left: 65%;
+  padding: 0.5rem;
+  margin: 1rem;
+}
+.title {
+  text-align: center;
+  color: rgb(253, 176, 62);
+  margin: 2rem 0 1rem 0;
+}
 
 /* ReviewModal.js */
 .modal-review {
@@ -297,9 +309,10 @@ input[type='file'] {
 }
 .food-category-box {
   display: flex;
-  padding: 1rem;
-  justify-content: center;
-  gap: 3rem;
+  flex-wrap: wrap;
+  /* padding:; */
+  /* justify-content: center; */
+  /* gap: 0.2rem; */
 }
 .cat1,
 .cat2,
@@ -312,7 +325,7 @@ input[type='file'] {
   color: rgb(235, 162, 68);
 }
 .food-icon {
-  width: 4rem;
+  width: 6rem;
 }
 .shopname {
   color: rgb(234, 161, 78);
@@ -337,6 +350,9 @@ input[type='file'] {
 
 .shop-profile-img {
   width: 24.5rem;
+}
+.shop-profile-name {
+  font-size: 1.4rem;
 }
 .shop-info {
   margin: 1rem 0 2rem 1rem;

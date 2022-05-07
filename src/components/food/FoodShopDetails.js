@@ -40,7 +40,9 @@ const FoodShopDetails = () => {
         <img className="shop-profile-img" src={shop.shopImg} alt="" />
         <div className="shop-info">
           <h1 className="shop-profile-name">{shop.shopName}</h1>
-          <h3 className="shop-profile-info">{shop.shopOpentime}</h3>
+          <h3 className="shop-profile-info">
+            ဆိုင်ဖွင့်ချိန် | {shop.shopOpentime}
+          </h3>
         </div>
       </div>
       <div className="shopMenus">

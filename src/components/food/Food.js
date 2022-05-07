@@ -49,7 +49,7 @@ const EditorChoice = () => {
         {shops.slice(0, 4).map((shop) => (
           <div>
             <div className="shop-card">
-              <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
+              <Link to={`/nama-food/shop/${shop.shopId}`}>
                 <img className="shopimg" src={shop.shopImg} alt="" />
               </Link>
               <span className="shopname">{shop.shopName}</span>
@@ -78,16 +78,16 @@ const FoodShop = () => {
   }, [])
   return (
     <>
-      <h3 className="category-label">Recently Added</h3>
+      <h3 className="category-label">စားသောက်ဆိုင်များ</h3>
       <div className="recently-added-box">
         {shops.map((shop) => (
           <div className="card-box">
-            <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
+            <Link to={`/nama-food/shop/${shop.shopId}`}>
               <img src={shop.shopImg} alt="" />
             </Link>
 
             <span>{shop.shopName}</span>
-            <span>{shop.shopOpentime}</span>
+            {/* <span>{shop.shopOpentime}</span> */}
           </div>
         ))}
       </div>
