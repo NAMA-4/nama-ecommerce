@@ -1,10 +1,16 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { firestore } from '../../config/firebase'
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  onSnapshot,
+  query,
+  collection,
+  orderBy,
+  where,
+} from 'firebase/firestore'
 
-// import { styled } from '@mui/material/styles'
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
@@ -12,18 +18,24 @@ import CardActions from '@mui/material/CardActions'
 
 import Typography from '@mui/material/Typography'
 
-export default function FoodShopp() {
+const FoodCategoryDetails = () => {
+  const { shopState } = useParams()
+
   const [shops, setShops] = useState([
     { shopName: 'Loading...', shopId: 'initial' },
   ])
 
   useEffect(() => {
     const collectionRef = collection(firestore, 'Food')
-    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const q = query(
+      collectionRef,
+      where('shopState', 'array-contains', shopState),
+      orderBy('timestamp', 'desc'),
+    )
     onSnapshot(q, (snapshot) => {
       setShops(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     })
-  }, [])
+  }, [shopState])
 
   return (
     <div>
@@ -61,3 +73,5 @@ export default function FoodShopp() {
     </div>
   )
 }
+
+export default FoodCategoryDetails

@@ -35,7 +35,7 @@ const EditorChoice = () => {
     const q = query(
       collectionRef,
       // orderBy('timestamp', 'desc'),
-      where('shopState', '==', 'A'),
+      where('shopState', 'array-contains', 'A'),
     )
     onSnapshot(q, (snapshot) => {
       setShops(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))

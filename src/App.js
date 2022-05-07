@@ -16,6 +16,7 @@ import FoodShop from './components/food/FoodShop'
 import AddFood from './components/food/AddFood'
 import FoodShopDetails4 from './components/food/FoodShopDetails4'
 import FoodShopDetails from './components/food/FoodShopDetails'
+import FoodCategoryDetails from './components/food/FoodCategoryDetails'
 
 function App() {
   return (
@@ -28,6 +29,10 @@ function App() {
           <Route path="/nama-food" element={<Food />} />
           {/* 4 */}
           <Route path="/nama-food/4" element={<Food4 />} />
+          <Route
+            path="/nama-food/:shopState/*"
+            element={<FoodCategoryDetails />}
+          />
 
           <Route path="/nama-food/shop" element={<FoodShop />} />
           {/* 4 */}

@@ -1,30 +1,41 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Category = () => {
   return (
-    <div className="food-category-box">
-      <div className="cat1">
-        <img className="food-icon" src="./img/7.png" alt="" />
-        {/* <h5>မနက်စာ</h5> */}
+    <>
+      <div className="food-category-box">
+        {data.map((icon) => (
+          <Link to={`/nama-food/${icon.shopState}`}>
+            <img className="food-icon" src={icon.img} alt="" />
+          </Link>
+        ))}
       </div>
-      <div className="cat2">
-        <img className="food-icon" src="./img/8.png" alt="" />
-        {/* <h5>နေ့လည်စာ</h5> */}
-      </div>
-      <div className="cat3">
-        <img className="food-icon" src="./img/9.png" alt="" />
-        {/* <h5>ညနေစာ</h5> */}
-      </div>
-      <div className="cat3">
-        <img className="food-icon" src="./img/10.png" alt="" />
-        {/* <h5>ညနေစာ</h5> */}
-      </div>
-      <div className="cat3">
-        <img className="food-icon" src="./img/11.png" alt="" />
-        {/* <h5>ညနေစာ</h5> */}
-      </div>
-    </div>
+    </>
   )
 }
 
 export default Category
+
+const data = [
+  {
+    shopState: 'drink',
+    img: './img/7.png',
+  },
+  {
+    shopState: 'C',
+    img: './img/8.png',
+  },
+  {
+    shopState: 'D',
+    img: './img/9.png',
+  },
+  {
+    shopState: 'noodle',
+    img: './img/10.png',
+  },
+  {
+    shopState: 'F',
+    img: './img/11.png',
+  },
+]
