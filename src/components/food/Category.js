@@ -23,11 +23,11 @@ const data = [
     img: './img/7.png',
   },
   {
-    shopState: 'C',
+    shopState: 'hamburger',
     img: './img/8.png',
   },
   {
-    shopState: 'D',
+    shopState: 'pizza',
     img: './img/9.png',
   },
   {
@@ -35,7 +35,19 @@ const data = [
     img: './img/10.png',
   },
   {
-    shopState: 'F',
+    shopState: 'malarshankaw',
     img: './img/11.png',
+  },
+  {
+    shopState: 'rice',
+    img: './img/15.png',
+  },
+  {
+    shopState: 'myayo',
+    img: './img/16.png',
+  },
+  {
+    shopState: 'steak',
+    img: './img/17.png',
   },
 ]
