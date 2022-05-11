@@ -17,6 +17,9 @@ import AddFood from './components/food/AddFood'
 import FoodShopDetails4 from './components/food/FoodShopDetails4'
 import FoodShopDetails from './components/food/FoodShopDetails'
 import FoodCategoryDetails from './components/food/FoodCategoryDetails'
+import Product from './components/product/Product'
+import AddProduct from './components/product/AddProduct'
+import ProductShopDetails4 from './components/product/ProductShopDetails4'
 
 function App() {
   return (
@@ -29,6 +32,15 @@ function App() {
           <Route path="/nama-food" element={<Food />} />
           {/* 4 */}
           <Route path="/nama-food/4" element={<Food4 />} />
+          <Route path="/nama-product" element={<Product />} />
+          {/* 4 */}
+          <Route path="/nama-product/4" element={<AddProduct />} />
+          {/* 4 */}
+          <Route
+            path="/nama-product/shop/:shopId/*"
+            element={<ProductShopDetails4 />}
+          />
+
           <Route
             path="/nama-food/:shopState/*"
             element={<FoodCategoryDetails />}

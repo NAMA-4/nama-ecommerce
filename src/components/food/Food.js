@@ -12,7 +12,6 @@ import {
 } from 'firebase/firestore'
 
 const Food = () => {
-  console.log('HIdosjf')
   return (
     <div>
       <ImagesliderFood />
@@ -46,7 +45,7 @@ const EditorChoice = () => {
     <>
       <h3 className="category-label">Editor's Choice</h3>
       <div className="food-shop-box">
-        {shops.slice(0, 4).map((shop) => (
+        {shops.map((shop) => (
           <div>
             <div className="shop-card">
               <Link to={`/nama-food/shop/${shop.shopId}`}>

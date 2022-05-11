@@ -28,10 +28,12 @@ const FoodProductCategory = () => {
           </div>
         </Link>
 
-        <div className="product">
-          <img className="product-img" src="./img/product-logo.png" alt="" />
-          <span> ကုန်ပစ္စည်း</span>
-        </div>
+        <Link className="link" to="/nama-product">
+          <div className="product">
+            <img className="product-img" src="./img/product-logo.png" alt="" />
+            <span> ကုန်ပစ္စည်း</span>
+          </div>
+        </Link>
       </div>
     </>
   )

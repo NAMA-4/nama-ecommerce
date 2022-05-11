@@ -58,6 +58,7 @@ const FoodShopDetails4 = () => {
   const addShopMenu = async () => {
     var menuName = document.getElementById('menuName').value
     var menuPrice = document.getElementById('menuPrice').value
+    var menuType = document.getElementById('menuType').value
 
     console.log(shopId)
 
@@ -75,6 +76,7 @@ const FoodShopDetails4 = () => {
         menuId: v4(),
         menuName: menuName,
         menuPrice: menuPrice,
+        menuType: menuType,
         // menuImg: url,
         timestamp: serverTimestamp(),
       }
@@ -83,7 +85,7 @@ const FoodShopDetails4 = () => {
         await setDoc(docRef, payload)
       })
       document.getElementById('menuName').value = ''
-      document.getElementById('menuPrice').value = ''
+      // document.getElementById('menuPrice').value = ''
     } else {
       const imageRef = ref(storage, `Food/${imageUpload.name}`)
       uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
@@ -92,6 +94,7 @@ const FoodShopDetails4 = () => {
             menuId: v4(),
             menuName: menuName,
             menuPrice: menuPrice,
+            menuType: menuType,
             menuImg: url,
             timestamp: serverTimestamp(),
           }
@@ -100,7 +103,7 @@ const FoodShopDetails4 = () => {
             await setDoc(docRef, payload)
           })
           document.getElementById('menuName').value = ''
-          document.getElementById('menuPrice').value = ''
+          // document.getElementById('menuPrice').value = ''
           setImageUpload('')
         })
       })
@@ -136,12 +139,12 @@ const FoodShopDetails4 = () => {
           id="menuPrice"
           placeholder="Menu Price"
         />
-        {/* <input
+        <input
           className="input"
           type="text"
           id="menuType"
           placeholder="Menu Type"
-        /> */}
+        />
         <label className="fileUpload">
           <ImageIcon fontSize="large" />
           <input

@@ -36,7 +36,7 @@ const AddFoodShop = () => {
   const [imageUpload, setImageUpload] = useState(null)
 
   useEffect(() => {
-    const collectionRef = collection(firestore, 'Food')
+    const collectionRef = collection(firestore, 'Product')
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const unsub = onSnapshot(q, (snapshot) => {
       setShops(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -47,26 +47,26 @@ const AddFoodShop = () => {
 
   const addFoodShop = () => {
     var shopName = document.getElementById('shopName').value
-    var shopOpentime = document.getElementById('shopOpentime').value
+    // var shopOpentime = document.getElementById('shopOpentime').value
     // var shopType = document.getElementById('shopType').value
 
-    const collectionRef = doc(firestore, 'Food', shopName)
+    const collectionRef = doc(firestore, 'Product', shopName)
 
     if (imageUpload == null) return
-    const imageRef = ref(storage, `Food/shopImg/${imageUpload.name}`)
+    const imageRef = ref(storage, `Product/shopImg/${imageUpload.name}`)
     uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
       await getDownloadURL(snapshot.ref).then(async (url) => {
         const payload = {
           shopId: v4(),
           shopName: shopName,
-          shopOpentime: shopOpentime,
+          // shopOpentime: shopOpentime,
           // shopType: shopType,
           shopImg: url,
           timestamp: serverTimestamp(),
         }
         await setDoc(collectionRef, payload)
         document.getElementById('shopName').value = ''
-        document.getElementById('shopOpentime').value = ''
+        // document.getElementById('shopOpentime').value = ''
         // document.getElementById('shopType').value = ''
         //   document.getElementById('shopImg').value = ''
       })
@@ -83,12 +83,12 @@ const AddFoodShop = () => {
           placeholder="Shop Name"
           type="text"
         />
-        <input
+        {/* <input
           className="input"
           id="shopOpentime"
           placeholder="Open Time"
           type="text"
-        />
+        /> */}
         {/* <input
           className="input"
           id="shopType"
@@ -107,7 +107,7 @@ const AddFoodShop = () => {
           />
         </label>
         <button className="addproduct-btn" onClick={addFoodShop}>
-          Add Food Shop
+          Add Product Shop
         </button>
       </div>
 
@@ -115,7 +115,7 @@ const AddFoodShop = () => {
         <Card sx={{ maxWidth: 400 }}>
           {shops.map((shop) => (
             <>
-              <Link to={`/nama-food/shop/${shop.shopId}`}>
+              <Link to={`/nama-product/shop/${shop.shopId}`}>
                 <CardMedia
                   component="img"
                   height="300"
@@ -130,12 +130,6 @@ const AddFoodShop = () => {
           "
                   >
                     {shop.shopName}
-                  </div>
-                  <div
-                    className="font-family
-          "
-                  >
-                    ဆိုင်ဖွင့်ချိန် | {shop.shopOpentime}
                   </div>
                 </Typography>
               </CardContent>

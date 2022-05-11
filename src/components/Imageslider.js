@@ -80,4 +80,45 @@ function ImagesliderFood() {
     </>
   )
 }
-export { ImagesliderMain, ImagesliderFood }
+
+function ImagesliderProduct() {
+  const [slideImages, setSlideImages] = useState([])
+
+  useEffect(() => {
+    const collectionRef = collection(firestore, 'SlideImages-Food')
+    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const unsub = onSnapshot(q, (snapshot) => {
+      setSlideImages(
+        snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
+      )
+    })
+
+    return unsub
+  }, [])
+  return (
+    <>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        {slideImages.map((val) => (
+          <SwiperSlide>
+            <img src={val.Img} alt="" />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
+  )
+}
+
+export { ImagesliderMain, ImagesliderFood, ImagesliderProduct }
