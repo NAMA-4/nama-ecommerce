@@ -48,14 +48,18 @@ const EditorChoice = () => {
         {shops.map((shop) => (
           <div>
             <div className="shop-card">
-              <Link to={`/nama-food/shop/${shop.shopId}`}>
+              <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
                 <img className="shopimg" src={shop.shopImg} alt="" />
               </Link>
               <span className="shopname">{shop.shopName}</span>
             </div>
           </div>
         ))}
-        <Link className="to-more link shopimg" to="/nama-food/shop">
+        <Link
+          className="to-more link shopimg"
+          to="/nama-food/shop"
+          target="_blank"
+        >
           <div className="more-text">ဆိုင်များသို့>>></div>
         </Link>
       </div>
@@ -81,7 +85,7 @@ const FoodShop = () => {
       <div className="recently-added-box">
         {shops.map((shop) => (
           <div className="card-box">
-            <Link to={`/nama-food/shop/${shop.shopId}`}>
+            <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
               <img src={shop.shopImg} alt="" />
             </Link>
 

@@ -6,7 +6,7 @@ const Category = () => {
     <>
       <div className="food-category-box">
         {data.map((icon) => (
-          <Link to={`/nama-food/${icon.shopState}`}>
+          <Link to={`/nama-food/${icon.shopState}`} target="_blank">
             <img className="food-icon" src={icon.img} alt="" />
           </Link>
         ))}
