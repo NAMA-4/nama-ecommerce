@@ -376,6 +376,7 @@ input[type='file'] {
   box-shadow: 0 10px 10px 0;
   border-radius: 10px;
   gap: 1rem;
+  z-index: 99;
 }
 .modal-box input {
   padding: 0.5rem;

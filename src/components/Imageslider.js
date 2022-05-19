@@ -7,7 +7,7 @@ import 'swiper/css/pagination'
 
 // import './styles.css'
 import { mainslide } from './ImageSlide'
-import { firestore } from '../config/firebase'
+import { firestore, secFirestore } from '../config/firebase'
 import { collection, orderBy, onSnapshot, query } from 'firebase/firestore'
 import { useState, useEffect } from 'react'
 
@@ -85,7 +85,7 @@ function ImagesliderProduct() {
   const [slideImages, setSlideImages] = useState([])
 
   useEffect(() => {
-    const collectionRef = collection(firestore, 'SlideImages-Food')
+    const collectionRef = collection(secFirestore, 'SlideImages-Product')
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const unsub = onSnapshot(q, (snapshot) => {
       setSlideImages(
@@ -112,7 +112,7 @@ function ImagesliderProduct() {
         className="mySwiper"
       >
         {slideImages.map((val) => (
-          <SwiperSlide>
+          <SwiperSlide key={val.id}>
             <img src={val.Img} alt="" />
           </SwiperSlide>
         ))}

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
-import { firestore, storage } from '../../config/firebase'
+import React from 'react'
+import { useState, useEffect } from 'react'
+import { secFirestore, secStorage } from '../../config/firebase'
 import {
   doc,
   addDoc,
@@ -19,19 +19,16 @@ import {
 } from 'firebase/storage'
 import ImageIcon from '@mui/icons-material/Image'
 import { v4 } from 'uuid'
-// import { async } from '@firebase/util'
 
-const Food4 = () => {
+const Product4 = () => {
   const [imageUpload, setImageUpload] = useState([])
   const [slideImages, setSlideImages] = useState([])
-  // const [menuName, setMenuName] = useState('')
-  // const [menuPrice, setMenuPrice] = useState('')
 
   const addSliderImage = () => {
-    const collectionRef = collection(firestore, 'SlideImages-Food')
+    const collectionRef = collection(secFirestore, 'SlideImages-Product')
 
     if (imageUpload == null) return
-    const imageRef = ref(storage, `Food/SlideImages/${imageUpload.name}`)
+    const imageRef = ref(secStorage, `SlideImages/${imageUpload.name}`)
     uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
       await getDownloadURL(snapshot.ref).then(async (url) => {
         const payload = {
@@ -46,7 +43,7 @@ const Food4 = () => {
   }
 
   useEffect(() => {
-    const collectionRef = collection(firestore, 'SlideImages-Food')
+    const collectionRef = collection(secFirestore, 'SlideImages-Product')
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const unsub = onSnapshot(q, (snapshot) => {
       setSlideImages(
@@ -58,12 +55,11 @@ const Food4 = () => {
   }, [])
 
   const handleDelete = async (id, img) => {
-    const docRef = doc(firestore, 'SlideImages-Food', id)
-    const imgRef = ref(storage, img)
+    const docRef = doc(secFirestore, 'SlideImages-Product', id)
+    const imgRef = ref(secStorage, img)
     await deleteDoc(docRef)
     await deleteObject(imgRef)
   }
-
   return (
     <>
       <div className="add-slider-image">
@@ -110,4 +106,4 @@ const Food4 = () => {
   )
 }
 
-export default Food4
+export default Product4

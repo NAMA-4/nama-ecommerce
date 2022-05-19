@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { firestore, storage } from '../../config/firebase'
+import { secFirestore, secStorage } from '../../config/firebase'
+// import { firestore, storage } from '../../config/firebaseP'
 import {
   ref,
   uploadBytes,
@@ -26,7 +27,6 @@ import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
-
 import Typography from '@mui/material/Typography'
 
 const AddFoodShop = () => {
@@ -36,7 +36,7 @@ const AddFoodShop = () => {
   const [imageUpload, setImageUpload] = useState(null)
 
   useEffect(() => {
-    const collectionRef = collection(firestore, 'Product')
+    const collectionRef = collection(secFirestore, 'Product')
     const q = query(collectionRef, orderBy('timestamp', 'desc'))
     const unsub = onSnapshot(q, (snapshot) => {
       setShops(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
@@ -50,10 +50,10 @@ const AddFoodShop = () => {
     // var shopOpentime = document.getElementById('shopOpentime').value
     // var shopType = document.getElementById('shopType').value
 
-    const collectionRef = doc(firestore, 'Product', shopName)
+    const collectionRef = doc(secFirestore, 'Product', shopName)
 
     if (imageUpload == null) return
-    const imageRef = ref(storage, `Product/shopImg/${imageUpload.name}`)
+    const imageRef = ref(secStorage, `Product/shopImg/${imageUpload.name}`)
     uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
       await getDownloadURL(snapshot.ref).then(async (url) => {
         const payload = {

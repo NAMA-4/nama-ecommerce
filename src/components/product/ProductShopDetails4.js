@@ -1,6 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { firestore, storage } from '../../config/firebase'
+// import { firestore, storage } from '../../config/firebase'
+import { secFirestore, secStorage } from '../../config/firebase'
+
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import {
@@ -44,6 +46,7 @@ const ProductShopDetails4 = () => {
   const [category, setCategory] = useState([])
   const [products, setProducts] = useState([])
   const [imageUpload, setImageUpload] = useState(null)
+  document.title = `NAMA-${shop.shopName}`
 
   const [value, setValue] = React.useState(0)
   const handleChange = (event, newValue) => {
@@ -52,7 +55,7 @@ const ProductShopDetails4 = () => {
 
   // window.scrollTo(0, 0)
   useEffect(() => {
-    const collectionRef = collection(firestore, 'Product')
+    const collectionRef = collection(secFirestore, 'Product')
 
     onSnapshot(collectionRef, (snapshot) => {
       const snap = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
@@ -60,7 +63,7 @@ const ProductShopDetails4 = () => {
       setShop(filterShop)
 
       const collectionCategory = collection(
-        firestore,
+        secFirestore,
         `Product/${shop.shopName}/category`,
       )
       onSnapshot(collectionCategory, (snapshot) => {
@@ -69,7 +72,7 @@ const ProductShopDetails4 = () => {
     })
 
     const collectionRefProduct = collection(
-      firestore,
+      secFirestore,
       `Product/${shop.shopName}/products`,
     )
     const q = query(collectionRefProduct, orderBy('timestamp', 'desc'))
@@ -81,10 +84,11 @@ const ProductShopDetails4 = () => {
   const addShopMenu = async () => {
     const productName = document.getElementById('productName').value
     const productPrice = document.getElementById('productPrice').value
+    const productType = document.getElementById('productType').value
     const productReview = document.getElementById('productReview').value
 
     const q = query(
-      collection(firestore, 'Product'),
+      collection(secFirestore, 'Product'),
       where('shopId', '==', shopId),
     )
     const querySnapShot = await getDocs(q)
@@ -97,20 +101,25 @@ const ProductShopDetails4 = () => {
         productId: v4(),
         productName: productName,
         productPrice: productPrice,
+        productType: productType,
         productReview: productReview,
         // menuImg: url,
         timestamp: serverTimestamp(),
       }
       queryData.map(async (v) => {
-        const docRef = doc(firestore, `Product/${v.id}/products`, productName)
+        const docRef = doc(
+          secFirestore,
+          `Product/${v.id}/products`,
+          productName,
+        )
         await setDoc(docRef, payload)
       })
-      document.getElementById('productName').value = ''
-      document.getElementById('productPrice').value = ''
-      document.getElementById('productReview').value = ''
+      // document.getElementById('productName').value = ''
+      // document.getElementById('productPrice').value = ''
+      // document.getElementById('productReview').value = ''
     } else {
       const imageRef = ref(
-        storage,
+        secStorage,
         `Product/${shop.shopName}/${imageUpload.name}`,
       )
       uploadBytes(imageRef, imageUpload).then(async (snapshot) => {
@@ -119,21 +128,22 @@ const ProductShopDetails4 = () => {
             productId: v4(),
             productName: productName,
             productPrice: productPrice,
+            productType: productType,
             productImg: url,
             productReview: productReview,
             timestamp: serverTimestamp(),
           }
           queryData.map(async (v) => {
             const docRef = doc(
-              firestore,
+              secFirestore,
               `Product/${v.id}/products`,
               productName,
             )
             await setDoc(docRef, payload)
           })
-          document.getElementById('productName').value = ''
-          document.getElementById('productPrice').value = ''
-          document.getElementById('productReview').value = ''
+          // document.getElementById('productName').value = ''
+          // document.getElementById('productPrice').value = ''
+          // document.getElementById('productReview').value = ''
           setImageUpload('')
         })
       })
@@ -142,7 +152,7 @@ const ProductShopDetails4 = () => {
 
   const handleCategory = (type) => {
     const collectionRef = collection(
-      firestore,
+      secFirestore,
       `Product/${shop.shopName}/products`,
     )
     const q = query(
@@ -157,7 +167,7 @@ const ProductShopDetails4 = () => {
   }
 
   const handleEdit = async (id, editproductName, editproductPrice) => {
-    const docRef = doc(firestore, `Product/${shop.shopName}/products`, id)
+    const docRef = doc(secFirestore, `Product/${shop.shopName}/products`, id)
 
     const payload = {
       productName: editproductName,
@@ -167,8 +177,8 @@ const ProductShopDetails4 = () => {
   }
 
   const handleDelete = async (id, img) => {
-    const docRef = doc(firestore, `Product/${shop.shopName}/products`, id)
-    const imgRef = ref(storage, img)
+    const docRef = doc(secFirestore, `Product/${shop.shopName}/products`, id)
+    const imgRef = ref(secStorage, img)
     await deleteDoc(docRef)
     await deleteObject(imgRef)
   }
@@ -188,6 +198,12 @@ const ProductShopDetails4 = () => {
           id="productPrice"
           placeholder="Product Price"
         />
+        <input
+          className="input"
+          type="text"
+          id="productType"
+          placeholder="Product Type"
+        />
         <textarea
           id="productReview"
           cols="30"
@@ -198,6 +214,7 @@ const ProductShopDetails4 = () => {
           <ImageIcon fontSize="large" />
           <input
             type="file"
+            multiple
             placeholder="select file"
             id="menuImg"
             onChange={(event) => {
@@ -342,7 +359,10 @@ const ProductCard = (props) => {
     <div>
       <Card sx={{ maxWidth: 400 }}>
         <CardActionArea>
-          <Link to={`/nama-product/shop/${shopId}/${product.productId}`}>
+          <Link
+            to={`/nama-product/shop/${shopId}/${product.productId}`}
+            target="_blank"
+          >
             <CardMedia
               className="item-img"
               component="img"

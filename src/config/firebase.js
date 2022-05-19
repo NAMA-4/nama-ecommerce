@@ -11,8 +11,22 @@ const firebaseConfig = {
   appId: '1:617057406473:web:87b5d995ef966b0f70f2d8',
 }
 
+const secondaryAppConfig = {
+  apiKey: 'AIzaSyCPwYP5mBLfQECGXv20cs2EV7RPLA6or9o',
+  authDomain: 'nama-product.firebaseapp.com',
+  projectId: 'nama-product',
+  storageBucket: 'nama-product.appspot.com',
+  messagingSenderId: '1098507387881',
+  appId: '1:1098507387881:web:3a94d85d60551291464178',
+  measurementId: 'G-LE43H1ZQEG',
+}
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-const firestore = getFirestore()
+const secondaryApp = initializeApp(secondaryAppConfig, 'secondary')
+const firestore = getFirestore(app)
 const storage = getStorage(app)
-export { firestore, storage }
+const secFirestore = getFirestore(secondaryApp)
+const secStorage = getStorage(secondaryApp)
+
+export { firestore, storage, secFirestore, secStorage }
