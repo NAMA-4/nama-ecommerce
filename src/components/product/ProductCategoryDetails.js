@@ -42,7 +42,7 @@ const ProductCategoryDetails = () => {
       <Card sx={{ maxWidth: 400 }}>
         {shops.map((shop) => (
           <>
-            <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
+            <Link to={`/nama-product/shop/${shop.shopId}`} target="_blank">
               <CardMedia
                 component="img"
                 height="300"
