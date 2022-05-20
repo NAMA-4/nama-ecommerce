@@ -87,7 +87,7 @@ const ProductDetails = () => {
                 <button className="btn">
                   <a
                     // href="https://www.messenger.com/t/108286378398611/?messaging_source=source%3Apages%3Amessage_shortlink"
-                    href="m.me/NamaEcom"
+                    href="https://www.messenger.com/t/100081477392288/"
                     class="btn"
                   >
                     <LocalGroceryStoreRoundedIcon
