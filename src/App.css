@@ -14,8 +14,7 @@
   background-color: rgb(89, 175, 251);
   z-index: 100;
 }
-.navbar .leftside {
-}
+
 .navbar .center-logo {
   display: flex;
   flex-direction: column;
