@@ -77,7 +77,9 @@ const ProductDetails = () => {
               alt="Paella dish"
             />
             <div className="call-actions">
-              <div className="left">visit {shop.shopName}</div>
+              <Link className="link" to={`/nama-product/shop/${shopId}`}>
+                <div className="left">Visit>> {shop.shopName}</div>
+              </Link>
               <div className="right">
                 <button className="btn">
                   <a href="tel:09455406870" className="btn">

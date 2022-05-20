@@ -407,6 +407,10 @@ input[type='file'] {
   display: flex;
   gap: 0.5rem;
 }
+.call-actions .left {
+  color: rgb(89, 175, 251);
+  font-size: 1rem;
+}
 .call-actions .right .btn {
   padding: 0.5rem;
   color: rgb(89, 175, 251);
