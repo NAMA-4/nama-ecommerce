@@ -83,7 +83,12 @@ const ProductShopDetails = () => {
       <div className="shop-profile">
         <img className="shop-profile-img" src={shop.shopImg} alt="" />
         <div className="shop-info">
-          <h1 className="shop-profile-name">{shop.shopName}</h1>
+          <h1
+            className="shop-profile-name"
+            style={{ color: 'rgb(89, 175, 251)' }}
+          >
+            {shop.shopName}
+          </h1>
           <h3 className="shop-profile-info">{shop.shopOpentime}</h3>
         </div>
       </div>

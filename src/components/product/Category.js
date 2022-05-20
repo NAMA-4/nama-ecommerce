@@ -6,7 +6,7 @@ const Category = () => {
     <>
       <div className="food-category-box">
         {data.map((icon) => (
-          <Link to={`/nama-food/${icon.shopState}`}>
+          <Link to={`/nama-product/${icon.shopState}`} target="_blank">
             <img className="food-icon" src={icon.img} alt="" />
           </Link>
         ))}
@@ -19,15 +19,15 @@ export default Category
 
 const data = [
   {
-    shopState: 'drink',
+    shopState: 'perfume',
     img: './img/12.png',
   },
   {
-    shopState: 'C',
+    shopState: 'cosmetics',
     img: './img/13.png',
   },
-  {
-    shopState: 'D',
-    img: './img/14.png',
-  },
+  // {
+  //   shopState: 'D',
+  //   img: './img/14.png',
+  // },
 ]

@@ -23,6 +23,7 @@ import ProductShopDetails4 from './components/product/ProductShopDetails4'
 import Product4 from './components/product/Product4'
 import ProductShopDetails from './components/product/ProductShopDetails'
 import ProductDetails from './components/product/ProductDetails'
+import ProductCategoryDetails from './components/product/ProductCategoryDetails'
 
 function App() {
   return (
@@ -57,6 +58,10 @@ function App() {
           <Route path="/nama-product" element={<Product />} />
           {/* 4 */}
           <Route path="/nama-product/4" element={<Product4 />} />
+          <Route
+            path="/nama-product/:shopState/*"
+            element={<ProductCategoryDetails />}
+          />
 
           {/* 4 */}
           <Route path="/nama-product/shop/4" element={<AddProduct />} />

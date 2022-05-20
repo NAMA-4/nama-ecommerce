@@ -1,32 +1,48 @@
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { useParams } from 'react-router-dom'
 import { secFirestore } from '../../config/firebase'
-
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import {
+  onSnapshot,
+  query,
+  collection,
+  orderBy,
+  where,
+} from 'firebase/firestore'
 
 import Card from '@mui/material/Card'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 import CardActions from '@mui/material/CardActions'
+
 import Typography from '@mui/material/Typography'
 
-const ProductShopContent = () => {
-  const [shops, setShops] = useState([])
+const ProductCategoryDetails = () => {
+  const { shopState } = useParams()
+
+  const [shops, setShops] = useState([
+    { shopName: 'Loading...', shopId: 'initial' },
+  ])
 
   useEffect(() => {
     const collectionRef = collection(secFirestore, 'Product')
-    const q = query(collectionRef, orderBy('timestamp', 'desc'))
+    const q = query(
+      collectionRef,
+      where('shopState', 'array-contains', shopState),
+      orderBy('timestamp', 'desc'),
+    )
     onSnapshot(q, (snapshot) => {
-      const snap = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-      setShops(snap)
+      setShops(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     })
-  }, [])
+  }, [shopState])
+
   return (
     <div>
       <Card sx={{ maxWidth: 400 }}>
         {shops.map((shop) => (
           <>
-            <Link to={`/nama-product/shop/${shop.shopId}`}>
+            <Link to={`/nama-food/shop/${shop.shopId}`} target="_blank">
               <CardMedia
                 component="img"
                 height="300"
@@ -39,9 +55,14 @@ const ProductShopContent = () => {
                 <div
                   className="font-family
           "
-                  style={{ color: 'rgb(89, 175, 251)' }}
                 >
                   {shop.shopName}
+                </div>
+                <div
+                  className="font-family
+          "
+                >
+                  ဆိုင်ဖွင့်ချိန် | {shop.shopOpentime}
                 </div>
               </Typography>
             </CardContent>
@@ -53,4 +74,4 @@ const ProductShopContent = () => {
   )
 }
 
-export default ProductShopContent
+export default ProductCategoryDetails

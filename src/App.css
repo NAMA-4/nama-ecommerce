@@ -396,6 +396,21 @@ input[type='file'] {
   bottom: 1rem;
 }
 
+/* ProductDetails.js */
+.call-actions {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.call-actions .right {
+  display: flex;
+  gap: 0.5rem;
+}
+.call-actions .right .btn {
+  padding: 0.5rem;
+  color: rgb(89, 175, 251);
+}
 /* Swiper.js */
 #app {
   height: 100%;
