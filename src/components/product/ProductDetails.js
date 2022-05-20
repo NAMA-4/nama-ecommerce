@@ -100,12 +100,8 @@ const ProductDetails = () => {
               </div>
             </div>
             <CardContent>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                className="myanmarFont"
-              >
-                {p.productReview}
+              <Typography variant="body2" color="text.secondary">
+                <p className="myanmarFont">{p.productReview}</p>
               </Typography>
             </CardContent>
           </>
