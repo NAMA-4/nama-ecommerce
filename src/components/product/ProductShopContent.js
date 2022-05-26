@@ -4,12 +4,6 @@ import { secFirestore } from '../../config/firebase'
 
 import { Link } from 'react-router-dom'
 
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import CardActions from '@mui/material/CardActions'
-import Typography from '@mui/material/Typography'
-
 const ProductShopContent = () => {
   const [shops, setShops] = useState([])
 
@@ -23,32 +17,72 @@ const ProductShopContent = () => {
   }, [])
   return (
     <div>
-      <Card sx={{ maxWidth: 400 }}>
-        {shops.map((shop) => (
-          <>
-            <Link to={`/nama-product/shop/${shop.shopId}`}>
-              <CardMedia
-                component="img"
-                height="300"
-                image={shop.shopImg}
-                alt="Paella dish"
-              />
+      {shops.map((shop) => (
+        <div className="shop">
+          <div className="shop-info">
+            <Link to={`/nama-product/shop/${shop.shopId}`} target="_blank">
+              <img src={shop.shopImg} alt="" />
             </Link>
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                <div
-                  className="font-family
-          "
-                  style={{ color: 'rgb(89, 175, 251)' }}
-                >
-                  {shop.shopName}
-                </div>
-              </Typography>
-            </CardContent>
-            <CardActions disableSpacing></CardActions>
-          </>
-        ))}
-      </Card>
+            <Link
+              className="link"
+              to={`/nama-product/shop/${shop.shopId}`}
+              target="_blank"
+            >
+              <span className="shopName">{shop.shopName}</span>
+            </Link>
+          </div>
+          <ShopItem shopId={shop.shopId} />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+const ShopItem = (props) => {
+  const { shopId } = props
+  const [shop, setShop] = useState([])
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const collectionRef = collection(secFirestore, 'Product')
+    onSnapshot(collectionRef, (snapshot) => {
+      const snap = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+      const filterShop = snap.find((shop) => shop.shopId === shopId)
+      setShop(filterShop)
+    })
+
+    const colletionProductRef = collection(
+      secFirestore,
+      `Product/${shop.shopName}/products`,
+    )
+    const q = query(colletionProductRef, orderBy('timestamp', 'desc'))
+    onSnapshot(q, (snapshot) => {
+      setProducts(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    })
+  }, [shopId, shop.shopName])
+  return (
+    <div className="shop-item-box">
+      {products.slice(0, 6).map((product) => (
+        <>
+          <div className="shop-item" key={product.id}>
+            <Link
+              to={`/nama-product/shop/${shopId}/${product.productId}`}
+              target="_blank"
+            >
+              <img src={product.productImg} alt="" />
+            </Link>
+            <span>{product.productPrice}ks</span>
+          </div>
+        </>
+      ))}
+      <Link
+        className="to-more link"
+        style={{ backgroundColor: 'rgb(89, 175, 251)' }}
+        to={`/nama-product/shop/${shop.shopId}`}
+        target="_blank"
+      >
+        <h3 className="more-text">More>>></h3>
+      </Link>
     </div>
   )
 }

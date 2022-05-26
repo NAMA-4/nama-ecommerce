@@ -49,8 +49,6 @@ const ProductDetails = () => {
       setProduct(snap)
     })
   }, [productId, shop.shopName])
-  console.log(product)
-  console.log(shop)
 
   return (
     <Card sx={{ maxWidth: 400 }}>
@@ -78,7 +76,9 @@ const ProductDetails = () => {
             />
             <div className="call-actions">
               <Link className="link" to={`/nama-product/shop/${shopId}`}>
-                <div className="left">Visit>> {shop.shopName}</div>
+                <div className="left">{p.productName}</div>
+                <div className="left">{p.productPrice}Ks</div>
+                <div className="left">More>>{shop.shopName}</div>
               </Link>
               <div className="right">
                 <button className="btn">
