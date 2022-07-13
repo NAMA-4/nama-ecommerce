@@ -73,7 +73,7 @@ const FoodShopDetails = () => {
                   </a>
                 </button>
                 <button className="btn btn2">
-                  <a href="tel:09455406870" class="btn btn-primary action">
+                  <a href="tel:09981466100" class="btn btn-primary action">
                     <PhoneRoundedIcon fontSize="small" />
                   </a>
                 </button>
